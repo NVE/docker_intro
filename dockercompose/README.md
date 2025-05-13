@@ -1,0 +1,206 @@
+
+
+# Docker compose
+
+
+## Oppsummering
+
+I denne oppgaven skal vi se på hvordan vi kan sette opp en eller flere containere med docker compose.
+
+## Hensikt
+
+Demonstrere hvordan vi konfigurerer:
+
+- en enkelt container med docker compose
+- flere containere i ett miljø
+
+
+## Fremgangsmåte
+
+### Opprett dockerfile
+
+- Opprett `Dockerfile` med følgene innhold:
+
+```dockerfile
+FROM ubuntu
+ENV melding="Hello IUR"
+CMD ["bash", "-c", "echo Melding er: $melding"]
+```
+
+### Bygg og test image
+
+- Bygg og test imaget og sjekk at det skriver ut en melding tilsvarende i oppgaven [hello world](../helloworld/README.md)
+
+### Opprett docker-compose
+
+- Opprett en fil ved navn `docker-compose.yml` og legg inn dette innholdet:
+
+```dockerfile
+services:
+  helloworld:
+    build: .
+```
+
+### Ta opp miljø
+
+
+- Høyreklikk på `docker-compose.yml` og velg `Compose Up`:
+
+![compose up](./resources/compose_up.png)
+
+Du skal nå se noe liknende dette i terminalen:
+
+```
+ To do so, set COMPOSE_BAKE=true.
+[+] Building 0.9s (6/6) FINISHED                                                                  docker:default
+ => [helloworld internal] load build definition from Dockerfile                                             0.0s
+ => => transferring dockerfile: 120B                                                                        0.0s
+ => [helloworld internal] load metadata for docker.io/library/ubuntu:latest                                 0.9s
+ => [helloworld internal] load .dockerignore                                                                0.0s
+ => => transferring context: 2B                                                                             0.0s
+ => CACHED [helloworld 1/1] FROM docker.io/library/ubuntu:latest@sha256:6015f66923d7afbc53558d7ccffd325d43  0.0s
+ => [helloworld] exporting to image                                                                         0.0s
+ => => exporting layers                                                                                     0.0s
+ => => writing image sha256:b8f1391f83c6401b0d634a7087dcb3a0f56f658022fac364235bbef8549edbc2                0.0s
+ => => naming to docker.io/library/dockercompose-helloworld                                                 0.0s
+ => [helloworld] resolving provenance for metadata file                                                     0.0s
+[+] Running 3/3
+ ✔ helloworld                            Built                                                              0.0s 
+ ✔ Network dockercompose_default         Created                                                            0.0s 
+ ✔ Container dockercompose-helloworld-1  Started       
+```
+
+I Visual Studio Code vises et image og en kjørende container:
+
+![running](./resources/running.png)
+
+Dette representerer et lite, isolert miljø med en kjørende container.
+
+### Vis logger
+
+- Vis loggene fra miljøet:
+
+![running](./resources/logs.png)
+
+Du skal nå se denne meldingen i loggen:
+
+```
+Melding er: Hello IUR
+```
+
+
+### Ta ned miljø
+
+- Ta ned miljøet med `Compose down`:
+
+![running](./resources/compose_down.png)
+
+### Bruk kommandolinjen
+
+Vi skal nå gjøre det samme med kommandlinjen.
+
+- Ta opp miljøet:
+    - `docker-compose up`
+- Ta ned miljøet:
+    - `docker-compose down`
+
+### Sett miljøvariabel
+
+- Oppdater `docker-compose.yml`. Sett miljøvariabelen `melding`:
+
+```dockerfile
+services:
+  helloworld:
+    build: .
+    environment:
+      melding: Jasså?
+```
+
+- Start miljøet på nytt og verifiser at ny melding skrives ut:
+
+```
+Melding er: Jasså?
+```
+
+
+### Lag miljø med to containere
+
+Vi skal nå settes opp et miljø med to containere som kommuniserer med hverandre.
+
+- Åpne filen `docker-compose-yml` i katalogen `webapp`:
+
+
+```
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    environment:
+      - PGHOST=postgres
+      - PGUSER=myuser
+      - PGPASSWORD=mypassword
+      - PGDATABASE=mydb
+      - PGPORT=5432
+```
+
+I denne filen definerer vi to tjenester:
+
+  1. En databaseserver som kjører [postgres](../oss/hvaer_postgres.md)
+  1. En applikasjon implementert i [node.js](../oss/hvaer_nodejs.md) som kobler seg opp mot databasen.
+
+
+Forklaring:
+
+- linje 2
+    - vi starter definisjon av en ny tjeneste "postgres"
+- linje 3
+    - tjenesten skal brukes ferdigbygd image `postgres:15`
+- linje 5 - 8
+    - her setter vi opp miljøvariabler som brukes av postgres
+- linje 9 - 10
+    - vi deler porten 5432
+- linje 11 - 12
+    - vi deler porten 5432
+- linje 13
+    - her begynner definisjon av tjenesten `app``
+- linje 14
+    - her angir vi at tjenesten `app` skal bygges ved hjelp av `Dockerfile` som ligger i samme katalog som `docker-compose.yml`
+- linje 15 -
+    - tilsvarende som for tjeneste postgres
+
+Her er en figur som viser miljøet:
+
+![environment](./resources/environment.png)
+
+### Ta opp milø
+
+- Ta opp miljøet ved hjelp av docker extension eller opprett med kommandolinjen:
+	- `cd webapp`
+    - `docker-compose up`
+
+### Sjekk miljøet
+
+ - Åpne denne adressen i nettleseren:
+	 - http://localhost:3000/
+
+
+- Ta ned miljøet:
+    - `docker-compose down`
+
+
+## Opprydning
+
+- Ta ned alle docker-compose- miljøer
+- Slett alle images

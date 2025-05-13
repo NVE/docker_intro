@@ -1,0 +1,3 @@
+### Hvorfor viser docker-historikken "missing" på noen av lagene?
+
+Når docker history viser <missing>, betyr det at Docker mangler metadata for det laget. Dette skjer ofte når basisbildet er slettet eller ryddet bort med docker image prune. Det kan også skje hvis bildet er importert fra en .tar-fil eller laget med --squash, som fjerner historikk. Selve lagene finnes fortsatt på disk, så bildet fungerer. Du ser bare ikke hele byggeprosessen bak.

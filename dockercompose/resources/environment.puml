@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+!define DOCKER_CONTAINER(x) component x <<container>>
+
+package "docker compose" {
+
+  DOCKER_CONTAINER(webapp) {
+    [Web App\n(Node.js)]
+  }
+
+  DOCKER_CONTAINER(postgres) {
+    [PostgreSQL\nDatabase]
+  }
+}
+
+[Web App\n(Node.js)] --> [PostgreSQL\nDatabase] : tcp 5432
+
+component nettleser
+
+nettleser -> [Web App\n(Node.js)] : http 3000
+
+@enduml

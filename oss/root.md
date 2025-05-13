@@ -1,0 +1,3 @@
+### Hva er root?
+
+Root er den mest privilegerte brukeren i et Unix- eller Linux-system, med full tilgang til alle filer og kommandoer. Root kan installere programvare, endre systeminnstillinger og få tilgang til alle brukeres data. Denne brukeren brukes ofte til administrasjon, men feil bruk kan føre til alvorlige sikkerhetshull. I Docker-kontekst betyr det at containere som kjører som root kan få uønsket tilgang til vertssystemet. Derfor anbefales det å bruke en begrenset bruker inne i containere for bedre sikkerhet.

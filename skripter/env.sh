@@ -1,0 +1,1 @@
+kursrot=/workspaces/docker_intro
