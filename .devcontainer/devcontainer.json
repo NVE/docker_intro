@@ -10,10 +10,7 @@
 		"vscode": {
 			"extensions": [
 				"GitHub.github-vscode-theme"
-			],
-			"settings": {
-				"workbench.colorTheme": "GitHub Light"
-			}
+			]
 		}
 	}
 }
