@@ -3,6 +3,15 @@
 
 # Introduksjon til docker
 
+## Oppsett
+
+Før vi begynner med oppgavene må vi sette opp lokalt miljø.
+
+Følg instruksene her:
+
+
+- [Oppsett](./oppsett/README.md)
+
 ## Oppgaver
 
 ### Hello world
