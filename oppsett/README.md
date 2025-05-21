@@ -20,7 +20,7 @@ Det kan klones med Visual Studio Code slik:
 
 Nytt vindu vises. Sjekk ut prosjektet:
 
-- Trykk `Ctrl` / `Cmd` + `P`
+- Trykk `Ctrl` + `Shift` + `p` (windows) / `Cmd` + `P` (mac)
 - Skriv:
     - `> Git clone`
 - Velg Clone from github
