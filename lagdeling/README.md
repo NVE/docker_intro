@@ -24,7 +24,6 @@ Demonstrere
 
 - Bygg image i oppgaven [Hello World](../helloworld/README.md)
 
-
 ### Definer nytt image som bygger på helloworld
 
 - Opprett følgende `Dockerfile`:
