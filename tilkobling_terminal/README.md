@@ -37,12 +37,7 @@ FROM ubuntu
         - høyreklikk på image `tilkobling_terminal`
         - velg "Run interactive"
 
-### Koble til interaktive terminal
-
-- Du skal nå ha en kjørende container
-    - I vindu "Docker: Containers":
-        - Høyreklikk på container `tilkobling_terminal`
-        - velg `Attach shell`
+<!-- Dette holder, etter man har kjørt denne er man i en prompt, så neste steg er overflødig -->
 
 - Visual Studio skal nå vise en [prompt](../oss/prompt.md) (kommandolinje) i et terminalvindu:
 
@@ -72,8 +67,9 @@ root@3a2899245da9:/#
     - Først må vi oppdatere liste over tilgjengelige pakker.
         - Skriv `apt update`
     - Installer programmet `cowsay` og `fortune`:
-        - Skriv `apt install cowsay` og aksepter installasjon med tasten "y"
-        - Skriv `apt install fortune` og aksepter installasjon med tasten "y"
+        - For å installere programmer i Linux bruker man operativsystemets integrerte package manager. For Ubuntu er dette `apt`
+        - Skriv `apt install cowsay` -> du får spørsmål `Do you want to continue? [Y/n]` aksepter med `enter` eller `y`
+        - Gjør det samme for `fortune`
 
 - Test programmet `fortune`:
     - `/usr/games/fortune`
