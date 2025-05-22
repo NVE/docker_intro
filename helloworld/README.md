@@ -18,6 +18,7 @@ Demonstrere hvordan
 ### Opprett Dockerfile
 
 - Opprett en fil som heter `Dockerfile`
+<!-- Dette er opprettet allerede, burde den fjernes fra devcontainer så de som tar kurset lager dette selv? -->
 
 Docker images baserer seg på basisimager som vi bygger videre på. Mest vanlige basisimager er operativsystemer.
 
@@ -69,7 +70,7 @@ Legg til denne linjen til `Dockerfile`:
 
 ```
 ENV melding="Hello IUR"
-CMD ["bash", "-c", "echo Melding er: $melding"]
+CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
 Forklaring:
@@ -82,10 +83,10 @@ Forklaring:
         - `CMD` - angir at det skal kjøres en kommando
         - `bash` - vi skal starte [bash](../oss/hvaer_bash.md) (som skal brukes til å utføre kommandoen)
         - `-c` er et flagg som sende til bash for å indikerer at vi kan bruke variabler o.l. i kommandoer
-        - `echo Melding er: $melding`  - vi skal skrive ut en melding
+        - `echo Melding er: ${melding}`  - vi skal skrive ut en melding
 	        - `echo` betyr at vi skal skrive ut noe (tilsvarende `console.log` o.l.)
 	        - `Melding er:` er statisk tekst (streng)
-	        - `$melding` variabelen som skal skrives ut
+	        - `${melding}` variabelen som skal skrives ut
 
 Kjør deretter imaget interaktivt, slik:
 
