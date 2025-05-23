@@ -32,6 +32,11 @@ FROM ubuntu
 		- `docker build . -t brukertilgang`
 		- `docker run --rm -it --name brukertilgang brukertilgang`
 
+Du skal nå få en [prompt](../oss/prompt.md) som viser at du er logget inn med brukeren `root`:
+```bash
+root@73afd15771b6:/$
+```
+
 ### Ødelegg container
 
 - Kjør følgende kommandoer i terminalen:
@@ -74,7 +79,9 @@ USER appuser
 Forklaring:
 
 - Linje 2 (`RUN useradd`)
-    - her kjører vi kommandoen `useradd` om oppretter en ny bruker ved navn `appuser`
+    - her kjører vi kommandoen `useradd` for å opprette en ny brukerkonto
+    - argumentene `-m` gjør at vi oppretter home directory for den nye brukeren og `s` spesifiserer at vi skal bruke /bin/bash shell
+    - til slutt sier vi hva brukernavnet skal være: `appuser` 
 - Linje 3 (`USER`)
     - her bytter vi til brukeren `appuser`
 

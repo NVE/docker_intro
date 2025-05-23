@@ -78,7 +78,7 @@ I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven
 
 ### Docker compose
 
-Ved hjelp av Docker Compose kan vi beskriver en applikasjon som består av flere containere i en komfigurasjonsfil og så starter alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/volumer og mer reproduserbare miljøer.
+Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i èn konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/volumer og forenkler opprettelse av reproduserbare miljøer.
 
 I denne oppgaven skal vi opprette en applikasjon som kjører i et miljø med flere containere.
 

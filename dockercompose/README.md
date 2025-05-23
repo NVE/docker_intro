@@ -24,7 +24,7 @@ Demonstrere hvordan vi konfigurerer:
 ```dockerfile
 FROM ubuntu
 ENV melding="Hello IUR"
-CMD ["bash", "-c", "echo Melding er: $melding"]
+CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
 ### Bygg og test image
@@ -98,6 +98,7 @@ Melding er: Hello IUR
 ### Bruk kommandolinjen
 
 Vi skal nå gjøre det samme med kommandlinjen.
+<!-- Legge til info om at man må navigere inn i /dockercompose i terminal? -->
 
 - Ta opp miljøet:
     - `docker-compose up`

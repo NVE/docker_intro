@@ -13,7 +13,7 @@ I denne oppgaven skal vi se på hvordan vi kan bruke tags for å versjonere og a
 Demonstrere
 
 - hvordan vi kan bruke tags for angi versjoner av images
-- at vi kan sette flere tags på en variant for å merke versjoner som f.eks prod og dev
+- at vi kan sette flere tags på samme image for versjonering som f.eks prod og dev
 
 ## Fremgangsmåte
 
@@ -55,13 +55,13 @@ Jeg er: Versjon 1
 
 ### Opprett versjon 2
 
-- Endre linje 2 i `Dockerfile` til å vi en ny melding:
+- Endre linje 2 i `Dockerfile` til å vise en ny melding:
 
 ```dockerfile
 ENV melding="Versjon 2"
 ```
 
-- Bygg image.Når du blir bedt om tag, skriv:
+- Bygg image. Når du blir bedt om tag, skriv:
     - `tags:v2`
 - Start `v2` interaktivt (`Run interactive`)
 
@@ -103,7 +103,7 @@ ENV melding="Versjon 3"
 ```bash
 docker build . -t tags:v3
 ```
-
+<!-- Dette fungerer ikke uten absolute path -->
 ### Merk som dev
 
 
@@ -127,7 +127,7 @@ docker run tags:dev
 docker image ls
 ```
 
-Du skal nå få en oppslisting liknende denne:
+Du skal nå få en opplisting liknende denne:
 
 ```
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
@@ -140,5 +140,5 @@ tags         v2        30ad835da7f4   10 days ago   101MB
 
 ## Opprydning
 
-- Slett containerene
-- Slett all images
+- Slett alle containere
+- Slett alle images
