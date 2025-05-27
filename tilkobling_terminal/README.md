@@ -37,9 +37,8 @@ FROM ubuntu
         - høyreklikk på image `tilkobling_terminal`
         - velg "Run interactive"
 
-<!-- Dette holder, etter man har kjørt denne er man i en prompt, så neste steg er overflødig -->
 
-- Visual Studio skal nå vise en [prompt](../oss/prompt.md) (kommandolinje) i et terminalvindu:
+Visual Studio viser nå en [prompt](../oss/prompt.md) (kommandolinje) i et terminalvindu:
 
 ```bash
 root@3a2899245da9:/#
