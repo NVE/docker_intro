@@ -20,7 +20,7 @@ Demonstrere
 
 ### Opprett dockerfile
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/tags` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
@@ -98,6 +98,8 @@ Vi skal nå merke versjon 2 som produksjonsversjon.
 ENV melding="Versjon 3"
 ```
 
+- Gå til oppgavekatalogen:
+    `cd /workspaces/docker_intro/tags`
 - Bygg og sett tag: `tags:v3` på kommandlinjen:
 
 ```bash

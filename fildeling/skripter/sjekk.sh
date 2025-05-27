@@ -3,6 +3,8 @@
 
 echo -- Sjekker: fildeling
 
+cd /workspaces/docker_intro/fildeling/fasit
+
 docker run --rm -i -d --name fildeling -p 8080:8080/tcp -v ./webroot:/webroot fildeling
 
 MAX_RETRIES=50

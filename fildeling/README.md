@@ -38,19 +38,23 @@ EXPOSE 8080
 
 - Bygg image
 - Start image fra [terminalen](../oss/ny_terminal.md):
-    - `docker run --rm -i -d --name fildeling -p 8080:8080/tcp -v ./fildeling/webroot:/webroot fildeling`
-        <!-- Denne kommandoen oppretter mappen webroot i rotmappen til prosjektet, den bruker ikke webroot i /fildeling.
-        Mon om dette er forskjellig oppførsel mellom windows og mac?  Fungerer når jeg endrer til absolute path -->
-    - flagget `-v` angir at vi skal dele en fil eller katalog
-        - første sti angir stien på versmaskin
-        - stiene adskilles med `:`
-        - andre sti angir stien på containeren
+    - Gå til riktig mappe:
+        - `cd /workspaces/docker_intro/fildeling/`
+    - Start image:
+        - `docker run --rm -i -d --name fildeling -p 8080:8080/tcp -v ./webroot:/webroot fildeling`
+
+Forklaring
+
+- flagget `-v` angir at vi skal dele en fil eller katalog
+    - første sti angir stien på versmaskin
+    - stiene adskilles med `:`
+    - andre sti angir stien på containeren
 
 ### Test websiden
 
 - Gå til `localhost:8080`
     - du skal nå se en vakker hjemmeside
-    <!-- Her ser man ingen vakker hjemmeside fordi imaget kopierer fra mappen webroot i rotmappen til prosjektet (som er tom), ikke webroot i mappen fildeling.  -->
+
 
 ### Test endringer
 

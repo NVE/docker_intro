@@ -98,8 +98,9 @@ Melding er: Hello IUR
 ### Bruk kommandolinjen
 
 Vi skal nå gjøre det samme med kommandlinjen.
-<!-- Legge til info om at man må navigere inn i /dockercompose i terminal? -->
 
+- Gå til katalogen der du har opprettet `docker-compose.yml`, f.eks:
+  - `cd /workspaces/docker_intro/dockercompose/`
 - Ta opp miljøet:
     - `docker-compose up`
 - Ta ned miljøet:
