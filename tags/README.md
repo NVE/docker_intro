@@ -99,13 +99,13 @@ ENV melding="Versjon 3"
 ```
 
 - Gå til oppgavekatalogen:
-    `cd /workspaces/docker_intro/tags`
+    - `cd /workspaces/docker_intro/tags`
 - Bygg og sett tag: `tags:v3` på kommandlinjen:
 
 ```bash
 docker build . -t tags:v3
 ```
-<!-- Dette fungerer ikke uten absolute path -->
+
 ### Merk som dev
 
 
