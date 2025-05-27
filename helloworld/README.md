@@ -17,16 +17,16 @@ Demonstrere hvordan
 
 ### Opprett Dockerfile
 
-- Opprett en fil som heter `Dockerfile`
-<!-- Dette er opprettet allerede, burde den fjernes fra devcontainer så de som tar kurset lager dette selv? -->
+- Opprett en fil som heter `Dockerfile` i katalogen `/workspaces/docker_intro/helloworld`
 
-Docker images baserer seg på basisimager som vi bygger videre på. Mest vanlige basisimager er operativsystemer.
 
 Angi [ubuntu](../oss/hvaer_ubuntu.md) som basis:
 
 ```
 FROM ubuntu
 ```
+
+Docker images baserer seg på basisimager som vi bygger videre på. I dette tilfellet operativsystemet [ubuntu](../oss/hvaer_ubuntu.md).
 
 ### Bygg image
 
