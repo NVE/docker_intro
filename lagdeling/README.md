@@ -26,9 +26,9 @@ Demonstrere
 
 ### Definer nytt image som bygger på helloworld
 
-- Opprett følgende `Dockerfile`:
-<!-- Nå står vi fortsatt i /workspaces/docker_intro/helloworld skulle man her spesifisert at denne Dockerfile må opprettes i lagdeling dir? -->
-```
+- Opprett følgende `Dockerfile` i katalogen `/workspaces/docker_intro/lagdeling`:
+
+```Dockerfile
 FROM helloworld
 ENV melding="Hello IUR! Nå med lag!"
 ```
@@ -42,12 +42,15 @@ Forklaring:
 
 ### Kjør nytt image
 
-- Bygg og kjør image basert på `Dockerfile`
-<!-- Bør det spesifiseres her at det er forskjell på å gjøre det i GUI og command line? 
-Kommandoen for å gjøre det i command line fra forrige eksempel vil ikke virke her.
-Image må tagges med navn, spesifisere at det er lagdeling? Meningen er vel å lage et nytt image, ikke overskrive det gamle? -->
+- Bygg image og tag det med navn `lagdeling`
+- Kjør image
 
-- Dersom du får en feilmelding her, bygg det manuelt i terminal: `docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
+
+_Tips:_
+
+> Dersom du får en feilmelding her, bygg det manuelt i terminal:
+>
+>	`docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
 
 Følgende melding skal vises på skjermen:
 
