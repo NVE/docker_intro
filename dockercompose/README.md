@@ -19,7 +19,7 @@ Demonstrere hvordan vi konfigurerer:
 
 ### Opprett dockerfile
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/dockercompose/` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
@@ -98,8 +98,9 @@ Melding er: Hello IUR
 ### Bruk kommandolinjen
 
 Vi skal nå gjøre det samme med kommandlinjen.
-<!-- Legge til info om at man må navigere inn i /dockercompose i terminal? -->
 
+- Ga til oppgavekatalogen:
+  - `cd /workspaces/docker_intro/dockercompose/`
 - Ta opp miljøet:
     - `docker-compose up`
 - Ta ned miljøet:
@@ -128,7 +129,7 @@ Melding er: Jasså?
 
 Vi skal nå settes opp et miljø med to containere som kommuniserer med hverandre.
 
-- Åpne filen `docker-compose-yml` i katalogen `webapp`:
+- Åpne filen `docker-compose.yml` i katalogen `webapp`:
 
 
 ```
@@ -185,7 +186,7 @@ Her er en figur som viser miljøet:
 
 ![environment](./resources/environment.png)
 
-### Ta opp milø
+### Ta opp miljø
 
 - Ta opp miljøet ved hjelp av docker extension eller opprett med kommandolinjen:
 	- `cd webapp`
