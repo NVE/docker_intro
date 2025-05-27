@@ -20,7 +20,7 @@ Demonstrere
 
 ### Opprett dockerfile
 
-- Opprette `Dockerfile` med følgene innhold:
+- Opprette `Dockerfile` i katalogen `/workspaces/docker_intro/fildeling` med følgende innhold:
 
 ```
 FROM ubuntu
@@ -34,9 +34,13 @@ EXPOSE 8080
 - Forklaring:
     - Linje 4:
         - Her oppretter vi katalogen som skal deles. Katalogen blir erstattet med katalogen på vertsmaskin ved oppstart
+
 ### Opprett container
 
-- Bygg image
+- Bygg image og gi det navnet `fildeling`
+- Start ny [terminal](../oss/ny_terminal.md) eller gjenbruk eksisterende
+- Gå til oppgavekatalogen:
+    - `cd /workspaces/docker_intro/fildeling/`
 - Start image fra [terminalen](../oss/ny_terminal.md):
     - Gå til riktig mappe:
         - `cd /workspaces/docker_intro/fildeling/`
@@ -52,8 +56,9 @@ Forklaring
 
 ### Test websiden
 
-- Gå til `localhost:8080`
+- Åpne nettleser og gå til `localhost:8080`
     - du skal nå se en vakker hjemmeside
+
 
 
 ### Test endringer
