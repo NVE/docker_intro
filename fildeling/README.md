@@ -20,7 +20,7 @@ Demonstrere
 
 ### Opprett dockerfile
 
-- Opprette `Dockerfile` med følgene innhold:
+- Opprette `Dockerfile` i katalogen `/workspaces/docker_intro/fildeling` med følgende innhold:
 
 ```
 FROM ubuntu
@@ -34,13 +34,15 @@ EXPOSE 8080
 - Forklaring:
     - Linje 4:
         - Her oppretter vi katalogen som skal deles. Katalogen blir erstattet med katalogen på vertsmaskin ved oppstart
+
 ### Opprett container
 
-- Bygg image
+- Bygg image og gi det navnet `fildeling`
+- Start ny [terminal](../oss/ny_terminal.md) eller gjenbruk eksisterende
+- Gå til oppgavekatalogen:
+    - `cd /workspaces/docker_intro/fildeling/`
 - Start image fra [terminalen](../oss/ny_terminal.md):
-    - `docker run --rm -i -d --name fildeling -p 8080:8080/tcp -v ./fildeling/webroot:/webroot fildeling`
-        <!-- Denne kommandoen oppretter mappen webroot i rotmappen til prosjektet, den bruker ikke webroot i /fildeling.
-        Mon om dette er forskjellig oppførsel mellom windows og mac?  Fungerer når jeg endrer til absolute path -->
+    - `docker run --rm -i -d --name fildeling -p 8080:8080/tcp -v ./webroot:/webroot fildeling`
     - flagget `-v` angir at vi skal dele en fil eller katalog
         - første sti angir stien på versmaskin
         - stiene adskilles med `:`
@@ -48,9 +50,9 @@ EXPOSE 8080
 
 ### Test websiden
 
-- Gå til `localhost:8080`
+- Åpne nettleser og gå til `localhost:8080`
     - du skal nå se en vakker hjemmeside
-    <!-- Her ser man ingen vakker hjemmeside fordi imaget kopierer fra mappen webroot i rotmappen til prosjektet (som er tom), ikke webroot i mappen fildeling.  -->
+
 
 ### Test endringer
 
