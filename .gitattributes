@@ -1,0 +1,6 @@
+# Text files – normalise and convert automatically
+* text=auto
+
+# Always keep Visual Studio files CRLF
+*.sln text eol=crlf
+*.csproj text eol=crlf
