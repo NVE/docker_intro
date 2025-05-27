@@ -189,8 +189,8 @@ Her er en figur som viser miljøet:
 ### Ta opp miljø
 
 - Ta opp miljøet ved hjelp av docker extension eller opprett med kommandolinjen:
-	- `cd webapp`
-    - `docker-compose up`
+  - `cd webapp`
+  - `docker-compose up`
 
 ### Sjekk miljøet
 
