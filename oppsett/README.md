@@ -105,8 +105,34 @@ For more examples and ideas, visit:
 
 ## Feilsøking
 
+### Rebygging av miljø
+
 Dersom det oppstår feil, forsøk dette:
 
 - Trykk `Ctrl` + `Shift` + `p` (windows) / `Cmd` + `P` (mac)
 - Skriv:
     - `> Dev Containers: Rebuild Container Without Cache`
+
+### Full test
+
+For å gjøre en grundig test av at miljøet fungerer, gjør følgende:
+
+- [Opprett et nytt terminalvindu i Visual Studio Code](../oss/ny_terminal.md).
+
+Denne kommandolinjen skal vises i Visual Studio Code i terminalvinduet:
+
+```bash
+vscode ➜ /workspaces/docker_intro (main) $ 
+```
+
+- Lim inn inn denne kommandoen:
+
+```bash
+./skripter/testalt.sh
+```
+
+Alle oppgavene skal nå kjøres gjennom og testes.
+
+Merk at dette tar ganske lang tid.
+
+Merk også at det vises noen feilmeldinger om man forsøker å slette containere og images som ikke eksisterer. Det er helt normalt.
