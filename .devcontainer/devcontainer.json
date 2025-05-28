@@ -1,8 +1,9 @@
 {
 	"name": "Dockerkurs",
 	"build": { "dockerfile": "Dockerfile" },
-	"onCreateCommand": ["sudo","chmod", "+x","/workspaces/docker_intro/.devcontainer/postAttachCommand.sh"],
-	"postCreateCommand": "/workspaces/docker_intro/.devcontainer/postAttachCommand.sh",
+	"onCreateCommand": ["sudo","chmod", "+x","/workspaces/docker_intro/.devcontainer/init.sh"],
+	"postCreateCommand": ["sudo", "dos2unix","/workspaces/docker_intro/.devcontainer/init.sh"],
+	"postStartCommand": "bash /workspaces/docker_intro/.devcontainer/init.sh",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 	},
