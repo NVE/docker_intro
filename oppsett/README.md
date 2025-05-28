@@ -52,3 +52,10 @@ Du skal nå ha et prosjekt som ser ca. slik ut:
 
 ![](./resources/docker_icon.png)
 
+## Feilsøking¨
+
+Dersom det oppstår feil, forsøk dette:
+
+- Trykk `Ctrl` + `Shift` + `p` (windows) / `Cmd` + `P` (mac)
+- Skriv:
+    - `> Dev Containers: Rebuild Container Without Cache`
