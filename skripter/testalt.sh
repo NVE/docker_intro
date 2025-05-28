@@ -1,6 +1,4 @@
 source /workspaces/docker_intro/skripter/env.sh
-
-$kursrot/skripter/genererdiagrammer.sh
 $kursrot/skripter/ryddopp.sh
 $kursrot/helloworld/skripter/test.sh
 $kursrot/helloworld_ferdig_image/skripter/test.sh
