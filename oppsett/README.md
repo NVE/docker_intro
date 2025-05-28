@@ -26,7 +26,7 @@ Nytt vindu vises. Sjekk ut prosjektet:
 - Velg Clone from github
 - Logg deg inn i github hvis du blir bedt om det
 - Skriv:
-    - `[NVE/docker_intro](https://github.com/NVE/docker_intro)`
+    - `https://github.com/NVE/docker_intro`
 - Velg en valgfri katalog
 - Vent til prosjektet er klonet
 - Når du får spørsmålet "Would you like to open the cloned repository?", velger du "Open in New Window"
