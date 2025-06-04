@@ -78,7 +78,7 @@ I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven
 
 ### Docker compose
 
-Ved hjelp av Docker Compose kan vi beskriver en applikasjon som består av flere containere i en komfigurasjonsfil og så starter alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/volumer og mer reproduserbare miljøer.
+Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i èn konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/volumer og forenkler opprettelse av reproduserbare miljøer.
 
 I denne oppgaven skal vi opprette en applikasjon som kjører i et miljø med flere containere.
 
@@ -107,13 +107,13 @@ Det kan klones med Visual Studio Code slik:
 
 Nytt vindu vises. Sjekk ut prosjektet:
 
-- Trykk `Ctrl` / `Cmd` + `P`
+- Trykk `Ctrl` + `Shift` + `p` (windows) / `Cmd` + `P` (mac)
 - Skriv:
     - `> Git clone`
 - Velg Clone from github
 - Logg deg inn i github hvis du blir bedt om det
 - Skriv:
-    - `NVE/docker_intro`
+    - `https://github.com/NVE/docker_intro`
 - Velg en valgfri katalog
 - Vent til prosjektet er klonet
 - Når du får spørsmålet "Would you like to open the cloned repository?", velger du "Open in New Window"
@@ -139,7 +139,90 @@ Du skal nå ha et prosjekt som ser ca. slik ut:
 
 ![](./resources/docker_icon.png)
 
+***OBS!*** Det kan ta inntil 10 minutter å sette opp miljøet.
 
+## Test
+
+Gjør følgende for å teste at docker fungerer i miljøet:
+
+- Opprett et nytt terminalvindu i Visual Studio Code.
+
+Denne kommandolinjen skal vises i Visual Studio Code i terminalvinduet:
+
+```bash
+vscode ➜ /workspaces/docker_intro (main) $ 
+```
+
+- Lim inn inn denne kommandoen:
+
+```bash
+docker run --rm hello-world
+```
+Denne teksten skal skal vises (noen avvik kan forekomme):
+
+```txt
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+c9c5fd25a1bd: Already exists 
+Digest: sha256:dd01f97f252193ae3210da231b1dca0cffab4aadb3566692d6730bf93f123a48
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+x
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
+
+
+## Feilsøking
+
+### Rebygging av miljø
+
+Dersom det oppstår feil, forsøk dette:
+
+- Trykk `Ctrl` + `Shift` + `p` (windows) / `Cmd` + `P` (mac)
+- Skriv:
+    - `> Dev Containers: Rebuild Container Without Cache`
+
+### Full test
+
+For å gjøre en grundig test av at miljøet fungerer, gjør følgende:
+
+- Opprett et nytt terminalvindu i Visual Studio Code.
+
+Denne kommandolinjen skal vises i Visual Studio Code i terminalvinduet:
+
+```bash
+vscode ➜ /workspaces/docker_intro (main) $ 
+```
+
+- Lim inn inn denne kommandoen:
+
+```bash
+./skripter/testalt.sh
+```
+
+Alle oppgavene skal nå kjøres gjennom og testes.
+
+Merk at dette tar ganske lang tid.
+
+Merk også at det vises noen feilmeldinger om man forsøker å slette containere og images som ikke eksisterer. Det er helt normalt.
 
 # Hello World
 
@@ -158,15 +241,16 @@ Demonstrere hvordan
 
 ### Opprett Dockerfile
 
-- Opprett en fil som heter `Dockerfile`
+- Opprett en fil som heter `Dockerfile` i katalogen `/workspaces/docker_intro/helloworld`
 
-Docker images baserer seg på basisimager som vi bygger videre på. Mest vanlige basisimager er operativsystemer.
 
 Angi ubuntu som basis:
 
 ```
 FROM ubuntu
 ```
+
+Docker images baserer seg på basisimager som vi bygger videre på. I dette tilfellet operativsystemet ubuntu.
 
 ### Bygg image
 
@@ -210,7 +294,7 @@ Legg til denne linjen til `Dockerfile`:
 
 ```
 ENV melding="Hello IUR"
-CMD ["bash", "-c", "echo Melding er: $melding"]
+CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
 Forklaring:
@@ -223,10 +307,10 @@ Forklaring:
         - `CMD` - angir at det skal kjøres en kommando
         - `bash` - vi skal starte bash (som skal brukes til å utføre kommandoen)
         - `-c` er et flagg som sende til bash for å indikerer at vi kan bruke variabler o.l. i kommandoer
-        - `echo Melding er: $melding`  - vi skal skrive ut en melding
+        - `echo Melding er: ${melding}`  - vi skal skrive ut en melding
 	        - `echo` betyr at vi skal skrive ut noe (tilsvarende `console.log` o.l.)
 	        - `Melding er:` er statisk tekst (streng)
-	        - `$melding` variabelen som skal skrives ut
+	        - `${melding}` variabelen som skal skrives ut
 
 Kjør deretter imaget interaktivt, slik:
 
@@ -329,9 +413,9 @@ Demonstrere
 
 ### Definer nytt image som bygger på helloworld
 
-- Opprett følgende `Dockerfile`:
+- Opprett følgende `Dockerfile` i katalogen `/workspaces/docker_intro/lagdeling`:
 
-```
+```Dockerfile
 FROM helloworld
 ENV melding="Hello IUR! Nå med lag!"
 ```
@@ -345,7 +429,15 @@ Forklaring:
 
 ### Kjør nytt image
 
-- Bygg og kjør image basert på `Dockerfile`
+- Bygg image og tag det med navn `lagdeling`
+- Kjør image
+
+
+_Tips:_
+
+> Dersom du får en feilmelding her, bygg det manuelt i terminal:
+>
+>	`docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
 
 Følgende melding skal vises på skjermen:
 
@@ -466,14 +558,8 @@ FROM ubuntu
         - høyreklikk på image `tilkobling_terminal`
         - velg "Run interactive"
 
-### Koble til interaktive terminal
 
-- Du skal nå ha en kjørende container
-    - I vindu "Docker: Containers":
-        - Høyreklikk på container `tilkobling_terminal`
-        - velg `Attach shell`
-
-- Visual Studio skal nå vise en prompt (kommandolinje) i et terminalvindu:
+Visual Studio viser nå en prompt (kommandolinje) i et terminalvindu:
 
 ```bash
 root@3a2899245da9:/#
@@ -501,8 +587,9 @@ root@3a2899245da9:/#
     - Først må vi oppdatere liste over tilgjengelige pakker.
         - Skriv `apt update`
     - Installer programmet `cowsay` og `fortune`:
-        - Skriv `apt install cowsay` og aksepter installasjon med tasten "y"
-        - Skriv `apt install fortune` og aksepter installasjon med tasten "y"
+        - For å installere programmer i Linux bruker man operativsystemets integrerte package manager. For Ubuntu er dette `apt`
+        - Skriv `apt install cowsay` -> du får spørsmål `Do you want to continue? [Y/n]` aksepter med `enter` eller `y`
+        - Gjør det samme for `fortune`
 
 - Test programmet `fortune`:
     - `/usr/games/fortune`
@@ -694,6 +781,11 @@ FROM ubuntu
 		- `docker build . -t brukertilgang`
 		- `docker run --rm -it --name brukertilgang brukertilgang`
 
+Du skal nå få en prompt som viser at du er logget inn med brukeren `root`:
+```bash
+root@73afd15771b6:/$
+```
+
 ### Ødelegg container
 
 - Kjør følgende kommandoer i terminalen:
@@ -736,7 +828,9 @@ USER appuser
 Forklaring:
 
 - Linje 2 (`RUN useradd`)
-    - her kjører vi kommandoen `useradd` om oppretter en ny bruker ved navn `appuser`
+    - her kjører vi kommandoen `useradd` for å opprette en ny brukerkonto
+    - argumentene `-m` gjør at vi oppretter home directory for den nye brukeren og `s` spesifiserer at vi skal bruke /bin/bash shell
+    - til slutt sier vi hva brukernavnet skal være: `appuser` 
 - Linje 3 (`USER`)
     - her bytter vi til brukeren `appuser`
 
@@ -786,14 +880,14 @@ I denne oppgaven skal vi se på hvordan vi kan bruke tags for å versjonere og a
 Demonstrere
 
 - hvordan vi kan bruke tags for angi versjoner av images
-- at vi kan sette flere tags på en variant for å merke versjoner som f.eks prod og dev
+- at vi kan sette flere tags på samme image for versjonering som f.eks prod og dev
 
 ## Fremgangsmåte
 
 
 ### Opprett dockerfile
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/tags` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
@@ -828,13 +922,13 @@ Jeg er: Versjon 1
 
 ### Opprett versjon 2
 
-- Endre linje 2 i `Dockerfile` til å vi en ny melding:
+- Endre linje 2 i `Dockerfile` til å vise en ny melding:
 
 ```dockerfile
 ENV melding="Versjon 2"
 ```
 
-- Bygg image.Når du blir bedt om tag, skriv:
+- Bygg image. Når du blir bedt om tag, skriv:
     - `tags:v2`
 - Start `v2` interaktivt (`Run interactive`)
 
@@ -871,6 +965,8 @@ Vi skal nå merke versjon 2 som produksjonsversjon.
 ENV melding="Versjon 3"
 ```
 
+- Gå til oppgavekatalogen:
+    - `cd /workspaces/docker_intro/tags`
 - Bygg og sett tag: `tags:v3` på kommandlinjen:
 
 ```bash
@@ -900,7 +996,7 @@ docker run tags:dev
 docker image ls
 ```
 
-Du skal nå få en oppslisting liknende denne:
+Du skal nå få en opplisting liknende denne:
 
 ```
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
@@ -913,8 +1009,8 @@ tags         v2        30ad835da7f4   10 days ago   101MB
 
 ## Opprydning
 
-- Slett containerene
-- Slett all images
+- Slett alle containere
+- Slett alle images
 
 # Docker compose
 
@@ -935,12 +1031,12 @@ Demonstrere hvordan vi konfigurerer:
 
 ### Opprett dockerfile
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/dockercompose/` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
 ENV melding="Hello IUR"
-CMD ["bash", "-c", "echo Melding er: $melding"]
+CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
 ### Bygg og test image
@@ -1015,6 +1111,8 @@ Melding er: Hello IUR
 
 Vi skal nå gjøre det samme med kommandlinjen.
 
+- Ga til oppgavekatalogen:
+  - `cd /workspaces/docker_intro/dockercompose/`
 - Ta opp miljøet:
     - `docker-compose up`
 - Ta ned miljøet:
@@ -1043,7 +1141,7 @@ Melding er: Jasså?
 
 Vi skal nå settes opp et miljø med to containere som kommuniserer med hverandre.
 
-- Åpne filen `docker-compose-yml` i katalogen `webapp`:
+- Åpne filen `docker-compose.yml` i katalogen `webapp`:
 
 
 ```
@@ -1100,11 +1198,11 @@ Her er en figur som viser miljøet:
 
 ![environment](./resources/environment.png)
 
-### Ta opp milø
+### Ta opp miljø
 
 - Ta opp miljøet ved hjelp av docker extension eller opprett med kommandolinjen:
-	- `cd webapp`
-    - `docker-compose up`
+  - `cd webapp`
+  - `docker-compose up`
 
 ### Sjekk miljøet
 
