@@ -3,6 +3,15 @@
 
 # Introduksjon til docker
 
+Under presenteres hver av seksjonene i kurset:
+
+## Presentasjon og info
+
+Denne seksjonen inneholder info om selve kurset.
+
+
+- Se kurspresentasjon og info for instruktører
+
 ## Oppsett
 
 Før vi begynner med oppgavene må vi sette opp lokalt miljø.
@@ -10,7 +19,7 @@ Før vi begynner med oppgavene må vi sette opp lokalt miljø.
 Følg instruksene her:
 
 
-- Oppsett
+- Seksjon Oppsett
 
 ## Oppgaver
 
@@ -143,29 +152,26 @@ Kurset er satt opp med et eget utviklingsmiljø basert på dev containers som sk
 
 Det er mulig å gjennomføre kurset uten å bruke det, men ikke anbefalt.
 
-Miljøet er teknisk sett i seg selv en docker container. Vi kommer med andre ord til å utvikle docker images og containere i en docker container (dette kalles docker-i-docker). Dette har i seg selv liten praktisk betydning for deltakerne, men en av fordelene er at vi får et isolert miljø der vi kan skape images og containere uten å påvirke oppsett på vertsmaskinen. Vi får også et miljø som er konsistent på tvers av ulike operativsystem og oppsett på vertsmaskiner.
+Miljøet er teknisk sett i seg selv en docker container. Vi kommer med andre ord til å utvikle docker images og containere i en docker container (dette kalles docker-i-docker). Dette har i seg selv liten praktisk betydning for deltakerne, men en av fordelene er at vi får et isolert miljø der vi kan skape images og containere uten å påvirke oppsett på vertsmaskinen. Vi får også et miljø som er konsistent på tvers av ulike operativsystem og oppsettet på vertsmaskiner.
 
 Utviklingsmiljøet er satt opp med Linux, noen som gjør at kurset i seg selv gir en enkel innføring i grunnleggende bruk av Linux.
 
-Se oppsett for info om hvordan miljøet settes opp.
+Se seksjon oppsett for info om hvordan miljøet settes opp.
 
 
 ## Filstruktur
 
 Kurset skal legges i en mappe som heter `docker_intro`. Det er valgfritt hvor denne mappen ligger, nen mappen må ha nøyaktig det navnet.
 
-Hver oppgave i kurset ligger i hver sin katalog:
+### Oppgavekatalog
 
+Hver oppgave i kurset ligger i hver sin katalog, f.eks:):
+
+- `helloworld`
 - `brukertilgang`
 - `dockercompose`
 - `fildeling`
 - `filkopiering`
-- `helloworld`
-- `lagdeling`
-- `nextcloud`
-- `tags`
-- `tilkobling_terminal`
-- `tjener`
 
 Alle oppgaver har filstruktur som likner denne (eksempelet er tatt fra oppgaven "tjener"):
 
@@ -179,6 +185,8 @@ Alle oppgaver har filstruktur som likner denne (eksempelet er tatt fra oppgaven 
 
 ```
 
+Legg dine oppgavebesvarelser i hver oppgavekatalog.
+
 Filene og katalogene har denne betydningen:
 
 
@@ -187,12 +195,15 @@ Filene og katalogene har denne betydningen:
 - `fasit` - Filer som inneholder hele eller deler av fasit. Kan brukes om du står fast.
 - `skripter` - skripter/ programmer som kan brukes for å teste installasjon og/ eller rydde opp. Skal inneholdet skriptet `ryddop.sh` som rydder opp containere, images m.m.
 
+### Andre kataloger
 
 Rotkatalogen har i tillegg andre nyttige kataloger:
 
 - `oss` - Inneholder info/ ofte stilte spørsmål. Kan brukes for oppslagsverk.
 - `generert_dokumentasjon` - inneholder dokumentasjon for kurset i formater som word, pdf o.l. Disse genereres fra Markdown.
 - `doc` - Dokumentasjon om selve kurset.
+- `.devcontainer` - Oppsett av utviklingsmiljø
+- `nextcloud` - Valgfri oppgave/ demo for oppsett av komplett kontorstøtteapplikasjon.
 
 
 

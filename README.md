@@ -3,6 +3,15 @@
 
 # Introduksjon til docker
 
+Under presenteres hver av seksjonene i kurset:
+
+## Presentasjon og info
+
+Denne seksjonen inneholder info om selve kurset.
+
+
+- Se [kurspresentasjon og info for instruktører](./doc/README.md)
+
 ## Oppsett
 
 Før vi begynner med oppgavene må vi sette opp lokalt miljø.
@@ -10,7 +19,7 @@ Før vi begynner med oppgavene må vi sette opp lokalt miljø.
 Følg instruksene her:
 
 
-- [Oppsett](./oppsett/README.md)
+- Seksjon [Oppsett](./oppsett/README.md)
 
 ## Oppgaver
 
