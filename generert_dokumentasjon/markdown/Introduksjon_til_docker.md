@@ -85,6 +85,141 @@ I denne oppgaven skal vi opprette en applikasjon som kjører i et miljø med fle
 - Oppgave: Docker compose
 
 
+# Kurspresentasjon og info for instruktører
+
+Denne seksjonen inneholder info om:
+
+ - Kurspresentasjon - som bør holdes ved oppstart av kurset
+ - Filstruktur - med info om filstruktur som brukes i kurset
+ - Utviklingsmiljø - med info om utviklingsmijøet som brukes for gjennomføring av kurset.
+ - Teknisk info - med info for personer som skal holde eller  videreutvikle kurset
+
+
+ 
+
+
+## Kurspresentasjon
+
+### Tidsplan
+
+| Tid | Aktivitet |
+| ---  | ------ |
+| 0000 - 0010  | Kloning av repo og verifikasjon av miljø |
+| 0010 - 0030  | Presentasjon av kursopplegg |
+| 0100 - 0330  | Presentasjon av kursopplegg |
+
+Tiden er gjengitt i tid relativ til oppstart av kurset.
+
+### Hensikt
+
+Kursets hensikt er:
+
+- å få praktisk kjennskap til grunnlegende bruk av docker
+
+### Retningslinjer
+
+ - Oppgavene skal gjennomføres i praksis av hver deltaker
+ - Man kan gjerne jobbe sammen i grupper, men alle skal gjennomføre oppgavene
+ - Når oppgavene er gjennomført, kan man gjerne leke/ improvisere opp nye oppgaver
+ - Deltakere tar pauser ved behov
+ - Bruk instruktører dersom dere står fast
+
+
+
+### Forutsetninger
+
+Programvare må være installert som angitt i instruks for oppsett
+
+
+
+
+
+
+
+
+## Utviklingsmiljø
+
+Kurset er satt opp med et eget utviklingsmiljø basert på dev containers som skal brukes under gjennomføring.
+
+Det er mulig å gjennomføre kurset uten å bruke det, men ikke anbefalt.
+
+Miljøet er teknisk sett i seg selv en docker container. Vi kommer med andre ord til å utvikle docker images og containere i en docker container (dette kalles docker-i-docker). Dette har i seg selv liten praktisk betydning for deltakerne, men en av fordelene er at vi får et isolert miljø der vi kan skape images og containere uten å påvirke oppsett på vertsmaskinen. Vi får også et miljø som er konsistent på tvers av ulike operativsystem og oppsett på vertsmaskiner.
+
+Utviklingsmiljøet er satt opp med Linux, noen som gjør at kurset i seg selv gir en enkel innføring i grunnleggende bruk av Linux.
+
+Se oppsett for info om hvordan miljøet settes opp.
+
+
+## Filstruktur
+
+Kurset skal legges i en mappe som heter `docker_intro`. Det er valgfritt hvor denne mappen ligger, nen mappen må ha nøyaktig det navnet.
+
+Hver oppgave i kurset ligger i hver sin katalog:
+
+- `brukertilgang`
+- `dockercompose`
+- `fildeling`
+- `filkopiering`
+- `helloworld`
+- `lagdeling`
+- `nextcloud`
+- `tags`
+- `tilkobling_terminal`
+- `tjener`
+
+Alle oppgaver har filstruktur som likner denne (eksempelet er tatt fra oppgaven "tjener"):
+
+```
+
+└── tjener
+    ├── fasit
+    ├── README.md
+    ├── resources
+    └── skripter
+
+```
+
+Filene og katalogene har denne betydningen:
+
+
+- `README.md` - Hoveddokument for hver oppgave. Start her.
+- `resources` - ressursfiler (bilder o.l.) som brukes av `README.md`
+- `fasit` - Filer som inneholder hele eller deler av fasit. Kan brukes om du står fast.
+- `skripter` - skripter/ programmer som kan brukes for å teste installasjon og/ eller rydde opp. Skal inneholdet skriptet `ryddop.sh` som rydder opp containere, images m.m.
+
+
+Rotkatalogen har i tillegg andre nyttige kataloger:
+
+- `oss` - Inneholder info/ ofte stilte spørsmål. Kan brukes for oppslagsverk.
+- `generert_dokumentasjon` - inneholder dokumentasjon for kurset i formater som word, pdf o.l. Disse genereres fra Markdown.
+- `doc` - Dokumentasjon om selve kurset.
+
+
+
+## Teknisk info
+
+Informasjonen under er nyttig for de som skal videreutvikle kurset eller være kursholder.
+
+### Installasjon av utviklingsverktøy
+
+Du trenger en del programmer for å generere dokumentasjon eller utvikle på koden i kurset. For å redusere tiden det tar å sette opp miljø i devcontainer, så er en del av disse programmer utelatt fra miljøet. Nødvendig programvare installeres med dette skriptet:
+
+```bash
+/workspaces/docker_intro/skripter/installerutviklingsverktoy.sh
+```
+
+
+### Fellesskripter
+
+I katalogen `skripter`under hovedkatalogen finnes følgende skripter som kan være nyttige:
+
+- `env.sh` - Setter felles miljøvariabler. Kalles fra andre skripter
+- `genererdiagrammer.sh` - Genererer diagrammer (forutsetter installasjon av utviklingsverktøy, se over)
+- `genererdokumentasjon.sh`  - Genererer dokumentasjon i forskjellige formater (forutsetter installasjon av utviklingsverktøy, se over)
+- `installerutviklingsverktoy.sh` - Se over
+- `konverterfiler.sh` - Konverterer filer i evt. Windowsformat over til unix og setter eksekverbarflagg på skripter. Kalles automatisk ved installasjon av dev container.
+- `ryddopp.sh` - Fjerner alle containere og images. Nyttig for feilsøking.
+- `testalt.sh` - Kjører alle skripter for alle oppgaver. Nyttig for verifikasjon av feilsøking.
 
 # Oppsett
 
@@ -93,8 +228,9 @@ I denne oppgaven skal vi opprette en applikasjon som kjører i et miljø med fle
 1. Installer WSL (Windows Subsystem for Linux)
     1. Følg instruksen "Install WSL Command" på Microsoft sine sider:
         - https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command
-1. Installer Docker Desktop fra Firmaportalen
-1. Installer extention "Dev Containers" i VSCode:
+1. Installer Docker Desktop
+1. Installer Visual Studio Code
+1. Installer extension "Dev Containers" i VSCode:
     - https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
 
 ## Kloning og åpning av prosjekt
@@ -224,6 +360,8 @@ Merk at dette tar ganske lang tid.
 
 Merk også at det vises noen feilmeldinger om man forsøker å slette containere og images som ikke eksisterer. Det er helt normalt.
 
+
+
 # Hello World
 
 ## Oppsummering
@@ -348,6 +486,8 @@ Slett imaget:
 ![](./resources/removeimage.png)
 
 
+
+
 # Hello World med ferdig image
 
 Denne gangen skal vi spare oss bryet med å legge inn programmet som skriver hello world.
@@ -386,6 +526,8 @@ This message shows that your installation appears to be working correctly.
 Hvis du ser teksten, gikk alt bra!
 
 Slett imaget før du går videre.
+
+
 # Lagdeling
 
 ## Oppsummering
@@ -521,6 +663,8 @@ Forklaring:
 
 Hvis du vil, kan du også slette de som vist i oppgaven hello world
 
+
+
 # Tilkobling med terminal
 
 
@@ -630,6 +774,8 @@ root@dba090c7e0ec:/# /usr/games/cowsay Moooo IUR!
 
 - Slett image
 
+
+
 # Installasjon av programvare
 
 
@@ -694,6 +840,8 @@ Du har nå et image som installerer programvaren `cowsay` under bygging og start
 
 - Slett image
 
+
+
 # Tjener
 
 
@@ -748,6 +896,8 @@ I dette eksempelet vises roten i filsystemet, noe vi vanligvis ikke ønsker. I o
 
 - Slett containeren
 - Slett image
+
+
 # Brukertilgang
 
 
@@ -866,6 +1016,8 @@ Hvis du vil kan du gjerne se hvor mye skade du klarer å gjøre. Forsøk også g
 
 - Slett containerene
 - Slett alle image
+
+
 
 # Tags
 
@@ -1011,6 +1163,8 @@ tags         v2        30ad835da7f4   10 days ago   101MB
 
 - Slett alle containere
 - Slett alle images
+
+
 
 # Docker compose
 
@@ -1218,6 +1372,8 @@ Her er en figur som viser miljøet:
 
 - Ta ned alle docker-compose- miljøer
 - Slett alle images
+
+
 
 # Ressurser
 

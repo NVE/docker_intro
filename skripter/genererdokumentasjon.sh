@@ -17,6 +17,7 @@ copy_course_files() {
   mv  "$dest/README.md"  "$dest/README_${course}.md"
   
   cat "$dest/README_${course}.md" >> $kursrot/temp/README_full.md
+  { printf '\n\n'; } >> $kursrot/temp/README_full.md
 
 
 }
@@ -28,8 +29,15 @@ mkdir $kursrot/temp/resources
 
 touch $kursrot/temp/README_full.md
 
-
 cat $kursrot/README.md >> $kursrot/temp/README_full.md
+
+copy_course_files doc
+
+cat $kursrot/doc/presentasjon.md >> $kursrot/temp/README_full.md
+cat $kursrot/doc/utviklingsmiljo.md >> $kursrot/temp/README_full.md
+cat $kursrot/doc/filstruktur.md >> $kursrot/temp/README_full.md
+cat $kursrot/doc/teknisk_info.md >> $kursrot/temp/README_full.md
+
 
 copy_course_files oppsett
 copy_course_files helloworld
@@ -56,7 +64,7 @@ rm $kursrot/temp/README_full.md
 mv $kursrot/temp/README_full_nolinks.md $kursrot/temp/README_full.md
 
 cd $kursrot/temp/
-pandoc -i README_full.md -o README_full.docx --reference-doc $kursrot/resources/Notatmal.docx
+pandoc -i README_full.md -o README_full.docx --standalone --table-of-contents --reference-doc $kursrot/resources/Notatmal.docx
 
 pandoc -i README_full.md -o $kursrot/generert_dokumentasjon/epub/Introduksjon_til_docker.epub -M title="Introduksjon til Docker" --epub-cover-image=$kursrot/resources/epub-cover.png
 
