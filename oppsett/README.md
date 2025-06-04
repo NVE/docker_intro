@@ -13,7 +13,9 @@
 
 ## Kloning og åpning av prosjekt
 
-Prosjektet er laget som et versjonskontrollert prosjekt i github. 
+Prosjektet er laget som et versjonskontrollert prosjekt i github.
+
+***OBS!*** Det kan ta inntil 10 minutter å sette opp miljøet.
 
 Det kan klones med Visual Studio Code slik:
 
@@ -53,7 +55,6 @@ Du skal nå ha et prosjekt som ser ca. slik ut:
 
 ![](./resources/docker_icon.png)
 
-***OBS!*** Det kan ta inntil 10 minutter å sette opp miljøet.
 
 ## Test
 
@@ -137,3 +138,20 @@ Alle oppgavene skal nå kjøres gjennom og testes.
 Merk at dette tar ganske lang tid.
 
 Merk også at det vises noen feilmeldinger om man forsøker å slette containere og images som ikke eksisterer. Det er helt normalt.
+
+### Command failed: C:\VSCode-NVE\Code.exe og Run: docker ps -q -a
+
+Hvis du får følgende feilmeldinger eller liknende:
+
+```
+Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=c:\Temp-docker\docker_intro --filter label=devcontainer.config_file=c:\Temp-docker\docker_intro\.devcontainer\devcontainer.json
+[58252 ms] Error: Command failed: docker run --sig-proxy=false -a STDOUT -a STDERR --mount type=bind,source=c:\Temp-docker\docker_intro,target=/workspaces/docker_intro,consistency=cached --mount type=volume,src=dind-var-lib-docker-1f46ccrd484ivd9a5mv619904fpsd0n04669semnhasc3hm00aid,dst=/var/lib/docker --mount type=volume,src=vscode,dst=/vscode --mount type=bind,src=\\wsl.localhost\Ubuntu\mnt\wslg\runtime-dir\wayland-0,dst=/tmp/vscode-wayland-a76d3e3a-e92f-4629-9b33-0b81ef9a7051.sock -l devcontainer.local_folder=c:\Temp-docker\docker_intro -l devcontainer.config_file=c:\Temp-docker\docker_intro\.devcontainer\devcontainer.json --privileged --entrypoint /bin/sh vsc-docker_intro-7e368a42f641fd4f5c4f4e9495091c6f64ebe6ac3d79ec234e848c21d6654da2 -c echo Container started
+Command failed: C:\VSCode-NVE\Code.exe c:\Users\nick\.vscode\extensions\ms-vscode-remote.remote-containers-0.413.0\dist\spec-node\devContainersSpecCLI.js up --user-data-folder 
+```
+
+... gjør dette:
+
+- Åpne Docker Desktop -> Settings -> Resources -> WSL Integration
+- Kryss av for «Enable integration with my default WSL distro» og marker også Ubuntu (eller den distribusjonen feilmeldingen viser til).
+- Klikk Apply & Restart for å starte Docker Desktop på nytt.
+- Gå tilbake til VS Code og kjør «Dev Containers: Rebuild and Reopen in Container».

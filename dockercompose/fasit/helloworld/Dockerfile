@@ -1,3 +1,3 @@
 FROM ubuntu
-ENV melding="Hello IUR"
+ENV melding="Hello NVE"
 CMD ["bash", "-c", "echo Melding er: $melding"]

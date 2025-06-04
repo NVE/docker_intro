@@ -23,7 +23,7 @@ Demonstrere hvordan vi konfigurerer:
 
 ```dockerfile
 FROM ubuntu
-ENV melding="Hello IUR"
+ENV melding="Hello NVE"
 CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
@@ -85,7 +85,7 @@ Dette representerer et lite, isolert miljø med en kjørende container.
 Du skal nå se denne meldingen i loggen:
 
 ```
-Melding er: Hello IUR
+Melding er: Hello NVE
 ```
 
 

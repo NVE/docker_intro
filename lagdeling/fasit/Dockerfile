@@ -1,2 +1,2 @@
 FROM helloworld
-ENV melding="Hello IUR! Nå med lag!"
+ENV melding="Hello NVE! Nå med lag!"
