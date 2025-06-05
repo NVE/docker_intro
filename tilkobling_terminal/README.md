@@ -33,8 +33,8 @@ FROM ubuntu
 ### Koble til interaktive terminal
 
 - Start image i interaktiv modus
-    - I vindu "Docker: Images":
-        - høyreklikk på image `tilkobling_terminal`
+    - I vindu "Containers: Images":
+        - høyreklikk på image `tilkobling_terminal` > `latest`
         - velg "Run interactive"
 
 
@@ -44,7 +44,7 @@ Visual Studio viser nå en [prompt](../oss/prompt.md) (kommandolinje) i et termi
 root@3a2899245da9:/#
 ```
 
-- ***Tips:*** Du kan også starte et interaktiv kommandolinje direkte fra terminalen:
+- ***Tips:*** Du kan også starte en interaktiv kommandolinje direkte fra terminalen:
     - `docker run --rm -it tilkobling_terminal`
 
 
@@ -102,8 +102,8 @@ root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
 
 ## Opprydning
 
-- Slett containeren:
-    - I vindu "Docker: Containers":
+- Containeren skal ha blitt fjernet etter å ha skrevet `exit` i terminalen, men dersom den ikke er det:
+    - I vindu "Containers: Containers":
         - Høyreklikk på container `tilkobling_terminal`
         - velg `Remove...` og aksepter advarsel
 
