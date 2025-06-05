@@ -20,7 +20,7 @@ Demonstrere
 
 ### Opprett image
 
-- Opprette `Dockerfile` med følgene innhold:
+- - Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/tjener/` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
