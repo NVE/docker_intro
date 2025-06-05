@@ -5,7 +5,7 @@
 
 ## Oppsummering
 
-I denne oppgaven skal vi se på hvordan vi kan kopiere filer fra vertsmaskinen inn til containeren.
+I denne oppgaven skal vi se på hvordan vi kan kopiere filer fra vertsmaskinen inn til containeren. Filkopiering brukes når vi ikke ønsker at filene skal kunne endres på vertsmaskinen fra containeren.
 
 ## Hensikt
 

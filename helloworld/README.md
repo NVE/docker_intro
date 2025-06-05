@@ -31,7 +31,6 @@ Docker images baserer seg på basisimager som vi bygger videre på. I dette tilf
 ### Bygg image
 
 
-
 Vi skal ny-bygge imaget:
 
 1. Høyreklikk på `Dockerfile`

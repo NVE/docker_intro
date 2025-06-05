@@ -5,7 +5,7 @@
 
 ## Oppsummering
 
-I denne oppgaven skal vi se på hvordan vi kan deler filer fra verstsmaskinen inn til containeren.
+I denne oppgaven skal vi se på hvordan vi kan deler filer fra verstsmaskinen inn til containeren. Deling av filer gjøres ved hjelp av [volumer](../oss/hvaer_volume.md).
 
 
 ## Hensikt

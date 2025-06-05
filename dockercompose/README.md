@@ -35,7 +35,7 @@ CMD ["bash", "-c", "echo Melding er: ${melding}"]
 
 - Opprett en fil ved navn `docker-compose.yml` og legg inn dette innholdet:
 
-```dockerfile
+```
 services:
   helloworld:
     build: .
@@ -155,6 +155,8 @@ services:
       - PGPASSWORD=mypassword
       - PGDATABASE=mydb
       - PGPORT=5432
+    depends_on:
+      - postgres
 ```
 
 I denne filen definerer vi to tjenester:
@@ -179,8 +181,14 @@ Forklaring:
     - her begynner definisjon av tjenesten `app`
 - linje 14
     - her angir vi at tjenesten `app` skal bygges ved hjelp av `Dockerfile` som ligger i samme katalog som `docker-compose.yml`
-- linje 15 -
+- linje 15
     - tilsvarende som for tjeneste postgres
+- linje 23-24
+    - her angir vi at containeren `app` er avhengig av `postgres`
+
+Containere er ofte avhengig av hverandre. F.eks. kan ikke webapplikasjoner starte opp før databasen er oppe å går. 
+
+Det at en container er avhengig av en annen, indikerer man ved å si at containeren `depends_on` en annen container. Det betyr at tjenesten vil vente til den andre tjenesten er klar.
 
 Her er en figur som viser miljøet:
 
@@ -188,7 +196,7 @@ Her er en figur som viser miljøet:
 
 ### Ta opp miljø
 
-- Ta opp miljøet ved hjelp av docker extension eller opprett med kommandolinjen:
+- Ta opp miljøet ved hjelp av container extension eller opprett med kommandolinjen:
   - `cd webapp`
   - `docker compose up -d`
 
@@ -202,11 +210,68 @@ Du skal nå få servert meldingen
 Hello NVE! Its me! From PostgreSQL!
 ```
 
-- Ta ned miljøet:
-    - `docker-compose down`
+Det er nå opprettet et internt nettverk mellom containerene Den ene containerenen kan nå de andre med DNS-navn over dette interne nettverket.
+
+Du kan inspisere det virtuelle nettverket slik:
+
+- I extension "Containers", gjør følgende:
+  - Åpne seksjonen "Networks" og verifiser at nettverket vises:
+
+![](./resources/networks.png)
+
+
+Dette kan du sjekke at det er kontakt mellom containerene ved å pinge den ene containeren fra den andre:
+
+- I extension "Containers", gjør følgende:
+  - Høyreklikk på `webapp-app` og velg "Attach shell":
+
+
+![](./resources/attach_shell.png)
+
+Det skal nå vises en kommandolinje tilsvarende denne:
+
+```bash
+root@7f5048ba73f8:/app# 
+```
+
+- Installer programmet [ping](../oss/hvaer_ping.md)
+
+```bash
+apt update
+apt install iputils-ping
+```
+
+- Gjør en `ping` til postgres (den andre containeren):
+
+```bash
+ping postgres
+```
+
+Ping skal nå vise at det er kontakt mellom containerene:
+
+```
+PING postgres (172.19.0.2) 56(84) bytes of data.
+64 bytes from webapp-postgres-1.webapp_default (172.19.0.2): icmp_seq=1 ttl=64 time=0.274 ms
+64 bytes from webapp-postgres-1.webapp_default (172.19.0.2): icmp_seq=2 ttl=64 time=0.066 ms
+```
+
+I filen `/webapp/app/index.js` (i oppgavekatalogen) kan du se at webapp kan referere til DNS-navnet til postgres:
+
+```js
+const pool = new Pool({
+  user: 'myuser',
+  host: 'postgres',
+  database: 'mydb',
+  password: 'mypassword',
+  port: 5432,
+});
+```
+
 
 
 ## Opprydning
 
-- Ta ned alle docker-compose- miljøer
+- Ta ned miljøet:
+    - `docker-compose down`
+
 - Slett alle images
