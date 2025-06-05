@@ -19,7 +19,7 @@ Demonstrere
 
 ### Opprett image
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/tilkobling_terminal/` med følgene innhold:
 
 ```
 FROM ubuntu
@@ -44,7 +44,7 @@ Visual Studio viser nå en [prompt](../oss/prompt.md) (kommandolinje) i et termi
 root@3a2899245da9:/#
 ```
 
-- ***Tips:*** Du kan også starte et interaktivt skall direkte fra terminalen:
+- ***Tips:*** Du kan også starte et interaktiv kommandolinje direkte fra terminalen:
     - `docker run --rm -it tilkobling_terminal`
 
 
@@ -55,7 +55,7 @@ root@3a2899245da9:/#
     - Bytt katalog med kommandoen `cd`, f.eks:
         - `cd /home/ubuntu/`
     - Skriv ut en melding på konsollet kommandoen `echo`, f.eks:
-        - `echo Hello IUR!`
+        - `echo Hello NVE!`
 
 - Du kan gjerne også teste ut [andre kommandoer](../oss/vanlige_kommandoer_i_bash.md)
     - Merk at noen av de krever at programmer er installert (f.eks `nano`). Det docker imaget vi har brukt er minimert for å redusere størrelsen.
@@ -80,13 +80,13 @@ Give your very best today.  Heaven knows it's little enough.
 ```
 
 - Test programmet `cowsay`:
-    - `/usr/games/cowsay Moooo IUR!`
+    - `/usr/games/cowsay Moooo NVE!`
     - Du skal nå få en ku med melding:
 
 ```bash
-root@dba090c7e0ec:/# /usr/games/cowsay Moooo IUR!
+root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
  ____________
-< Moooo IUR! >
+< Moooo NVE! >
  ------------
         \   ^__^
          \  (oo)\_______

@@ -4,4 +4,4 @@ CREATE TABLE messages (
     text TEXT NOT NULL
 );
 
-INSERT INTO messages (text) VALUES ('Hello IUR! Its me! From PostgreSQL!');
+INSERT INTO messages (text) VALUES ('Hello NVE! Its me! From PostgreSQL!');

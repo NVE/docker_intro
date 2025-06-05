@@ -9,6 +9,7 @@ Lagene i docker images kan sammenliknes med lag på en kake der hvert lag bygger
 
 ![lag](./resources/layers.png)
 
+Dersom man gjør endringer i `Dockerfile` vil det resultere nye nytt lag som bygger videre på de eksisterende.
 
 ## Hensikt
 
@@ -30,7 +31,7 @@ Demonstrere
 
 ```Dockerfile
 FROM helloworld
-ENV melding="Hello IUR! Nå med lag!"
+ENV melding="Hello NVE! Nå med lag!"
 ```
 
 Forklaring:
@@ -42,27 +43,23 @@ Forklaring:
 
 ### Kjør nytt image
 
-- Bygg image (dette MÅ gjøres via kommandolinjen, se under) og tag det med navn `lagdeling`
-- Kjør image
+- Bygg og kjør image i terminalen:
 
-
-_Tips:_
-
-> Dersom du får en feilmelding her, bygg det manuelt i terminal:
->
->	`docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
+```bash
+docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
+```
 
 Følgende melding skal vises på skjermen:
 
 ```
-Melding er: Hello IUR! Nå med lag!
+Melding er: Hello NVE! Nå med lag!
 ```
 
 - Nå skrives den nye verdien til miljøvariabelen `melding` ut
 - Hvis du kjører imaget `helloworld`, skrives den gamle meldingen ut:
 
 ```
-Melding er: Hello IUR
+Melding er: Hello NVE
 ````
 
 - Vi har nå bygget et nytt image `lagdeling` som bygger videre på `helloworld`
@@ -83,7 +80,7 @@ docker history helloworld
 vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history helloworld
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
 b04ca4b27355   8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0
-<missing>      8 days ago   ENV melding=Hello IUR                           0B        buildkit.dockerfile.v0
+<missing>      8 days ago   ENV melding=Hello NVE                           0B        buildkit.dockerfile.v0
 <missing>      8 days ago   /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B        
 (..))
 ```
@@ -91,7 +88,7 @@ b04ca4b27355   8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B  
 - Legg merke til de to øverste linjene (se kolonne `CREATED BY`):
 
     - `CMD ["bash" "-c" "echo Melding er: $melding"]`
-    - `ENV melding=Hello IUR`
+    - `ENV melding=Hello NVE`
 
 - Dette viser at det er opprettet to lag. Ett lag for hver linje i `Dockerfile`
 
@@ -106,14 +103,14 @@ docker history lagdeling
 ```bash
 vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history lagdeling
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
-71e52e650dda   8 days ago   ENV melding=Hello IUR! Nå med lag!              0B        buildkit.dockerfile.v0
+71e52e650dda   8 days ago   ENV melding=Hello NVE! Nå med lag!              0B        buildkit.dockerfile.v0
 <missing>      8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0
-<missing>      8 days ago   ENV melding=Hello IUR                           0B        buildkit.dockerfile.v0
+<missing>      8 days ago   ENV melding=Hello NVE                           0B        buildkit.dockerfile.v0
 (..)
 ```
 
 - Legg merke til denne linjen:
-    - `ENV melding=Hello IUR! Nå med lag!`
+    - `ENV melding=Hello NVE! Nå med lag!`
 
 - Dette viser at det er opprettet et nytt lag som ligger oppå de andre lagene
 

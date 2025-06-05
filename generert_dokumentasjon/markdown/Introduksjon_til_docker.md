@@ -3,6 +3,15 @@
 
 # Introduksjon til docker
 
+Under presenteres hver av seksjonene i kurset:
+
+## Presentasjon og info
+
+Denne seksjonen inneholder info om selve kurset.
+
+
+- Se kurspresentasjon og info for instruktører
+
 ## Oppsett
 
 Før vi begynner med oppgavene må vi sette opp lokalt miljø.
@@ -10,7 +19,7 @@ Før vi begynner med oppgavene må vi sette opp lokalt miljø.
 Følg instruksene her:
 
 
-- Oppsett
+- Seksjon Oppsett
 
 ## Oppgaver
 
@@ -106,7 +115,7 @@ Denne seksjonen inneholder info om:
 | ---  | ------ |
 | 0000 - 0010  | Kloning av repo og verifikasjon av miljø |
 | 0010 - 0030  | Presentasjon av kursopplegg |
-| 0100 - 0330  | Presentasjon av kursopplegg |
+| 0100 - 0330  | Gjennomføring av oppgaver |
 
 Tiden er gjengitt i tid relativ til oppstart av kurset.
 
@@ -123,7 +132,7 @@ Kursets hensikt er:
  - Når oppgavene er gjennomført, kan man gjerne leke/ improvisere opp nye oppgaver
  - Deltakere tar pauser ved behov
  - Bruk instruktører dersom dere står fast
-
+ - Koble deg opp på Teams. Spør gjerne spørsmål i kanalen.
 
 
 ### Forutsetninger
@@ -143,29 +152,26 @@ Kurset er satt opp med et eget utviklingsmiljø basert på dev containers som sk
 
 Det er mulig å gjennomføre kurset uten å bruke det, men ikke anbefalt.
 
-Miljøet er teknisk sett i seg selv en docker container. Vi kommer med andre ord til å utvikle docker images og containere i en docker container (dette kalles docker-i-docker). Dette har i seg selv liten praktisk betydning for deltakerne, men en av fordelene er at vi får et isolert miljø der vi kan skape images og containere uten å påvirke oppsett på vertsmaskinen. Vi får også et miljø som er konsistent på tvers av ulike operativsystem og oppsett på vertsmaskiner.
+Miljøet er teknisk sett i seg selv en docker container. Vi kommer med andre ord til å utvikle docker images og containere i en docker container (dette kalles docker-i-docker). Dette har i seg selv liten praktisk betydning for deltakerne, men en av fordelene er at vi får et isolert miljø der vi kan skape images og containere uten å påvirke oppsett på vertsmaskinen. Vi får også et miljø som er konsistent på tvers av ulike operativsystem og oppsettet på vertsmaskiner.
 
 Utviklingsmiljøet er satt opp med Linux, noen som gjør at kurset i seg selv gir en enkel innføring i grunnleggende bruk av Linux.
 
-Se oppsett for info om hvordan miljøet settes opp.
+Se seksjon oppsett for info om hvordan miljøet settes opp.
 
 
 ## Filstruktur
 
 Kurset skal legges i en mappe som heter `docker_intro`. Det er valgfritt hvor denne mappen ligger, nen mappen må ha nøyaktig det navnet.
 
-Hver oppgave i kurset ligger i hver sin katalog:
+### Oppgavekatalog
 
+Hver oppgave i kurset ligger i hver sin katalog, f.eks:):
+
+- `helloworld`
 - `brukertilgang`
 - `dockercompose`
 - `fildeling`
 - `filkopiering`
-- `helloworld`
-- `lagdeling`
-- `nextcloud`
-- `tags`
-- `tilkobling_terminal`
-- `tjener`
 
 Alle oppgaver har filstruktur som likner denne (eksempelet er tatt fra oppgaven "tjener"):
 
@@ -179,6 +185,8 @@ Alle oppgaver har filstruktur som likner denne (eksempelet er tatt fra oppgaven 
 
 ```
 
+Legg dine oppgavebesvarelser i hver oppgavekatalog.
+
 Filene og katalogene har denne betydningen:
 
 
@@ -187,12 +195,15 @@ Filene og katalogene har denne betydningen:
 - `fasit` - Filer som inneholder hele eller deler av fasit. Kan brukes om du står fast.
 - `skripter` - skripter/ programmer som kan brukes for å teste installasjon og/ eller rydde opp. Skal inneholdet skriptet `ryddop.sh` som rydder opp containere, images m.m.
 
+### Andre kataloger
 
 Rotkatalogen har i tillegg andre nyttige kataloger:
 
 - `oss` - Inneholder info/ ofte stilte spørsmål. Kan brukes for oppslagsverk.
 - `generert_dokumentasjon` - inneholder dokumentasjon for kurset i formater som word, pdf o.l. Disse genereres fra Markdown.
 - `doc` - Dokumentasjon om selve kurset.
+- `.devcontainer` - Oppsett av utviklingsmiljø
+- `nextcloud` - Valgfri oppgave/ demo for oppsett av komplett kontorstøtteapplikasjon.
 
 
 
@@ -235,7 +246,9 @@ I katalogen `skripter`under hovedkatalogen finnes følgende skripter som kan væ
 
 ## Kloning og åpning av prosjekt
 
-Prosjektet er laget som et versjonskontrollert prosjekt i github. 
+Prosjektet er laget som et versjonskontrollert prosjekt i github.
+
+***OBS!*** Det kan ta inntil 10 minutter å sette opp miljøet.
 
 Det kan klones med Visual Studio Code slik:
 
@@ -275,7 +288,6 @@ Du skal nå ha et prosjekt som ser ca. slik ut:
 
 ![](./resources/docker_icon.png)
 
-***OBS!*** Det kan ta inntil 10 minutter å sette opp miljøet.
 
 ## Test
 
@@ -360,6 +372,23 @@ Merk at dette tar ganske lang tid.
 
 Merk også at det vises noen feilmeldinger om man forsøker å slette containere og images som ikke eksisterer. Det er helt normalt.
 
+### Command failed: C:\VSCode-NVE\Code.exe og Run: docker ps -q -a
+
+Hvis du får følgende feilmeldinger eller liknende:
+
+```
+Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=c:\Temp-docker\docker_intro --filter label=devcontainer.config_file=c:\Temp-docker\docker_intro\.devcontainer\devcontainer.json
+[58252 ms] Error: Command failed: docker run --sig-proxy=false -a STDOUT -a STDERR --mount type=bind,source=c:\Temp-docker\docker_intro,target=/workspaces/docker_intro,consistency=cached --mount type=volume,src=dind-var-lib-docker-1f46ccrd484ivd9a5mv619904fpsd0n04669semnhasc3hm00aid,dst=/var/lib/docker --mount type=volume,src=vscode,dst=/vscode --mount type=bind,src=\\wsl.localhost\Ubuntu\mnt\wslg\runtime-dir\wayland-0,dst=/tmp/vscode-wayland-a76d3e3a-e92f-4629-9b33-0b81ef9a7051.sock -l devcontainer.local_folder=c:\Temp-docker\docker_intro -l devcontainer.config_file=c:\Temp-docker\docker_intro\.devcontainer\devcontainer.json --privileged --entrypoint /bin/sh vsc-docker_intro-7e368a42f641fd4f5c4f4e9495091c6f64ebe6ac3d79ec234e848c21d6654da2 -c echo Container started
+Command failed: C:\VSCode-NVE\Code.exe c:\Users\nick\.vscode\extensions\ms-vscode-remote.remote-containers-0.413.0\dist\spec-node\devContainersSpecCLI.js up --user-data-folder 
+```
+
+... gjør dette:
+
+- Åpne Docker Desktop -> Settings -> Resources -> WSL Integration
+- Kryss av for «Enable integration with my default WSL distro» og marker også Ubuntu (eller den distribusjonen feilmeldingen viser til).
+- Klikk Apply & Restart for å starte Docker Desktop på nytt.
+- Gå tilbake til VS Code og kjør «Dev Containers: Rebuild and Reopen in Container».
+
 
 
 # Hello World
@@ -392,9 +421,7 @@ Docker images baserer seg på basisimager som vi bygger videre på. I dette tilf
 
 ### Bygg image
 
-- Finn frem docker extension i Visual Studio Code ved å klikke på docker- ikonet:
 
-![docker](./resources/docker_icon.png)
 
 Vi skal ny bygge imaget:
 
@@ -431,14 +458,14 @@ I vinduet "Terminal" skal det ha blitt skrevet noe som likner på dette:
 Legg til denne linjen til `Dockerfile`:
 
 ```
-ENV melding="Hello IUR"
+ENV melding="Hello NVE"
 CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
 Forklaring:
 
 - Linje 1
-    - vi setter en miljøvariabelen `melding` til verdien "Hello IUR"
+    - vi setter en miljøvariabelen `melding` til verdien "Hello NVE"
 - Linje 2
     - her skriver vi ut teksten "Melding er" etterfulgt av verdien av miljøvariabelen
     - linjen ser litt kompliser ut, men består av fire ganske enkle deler som betyr følgende:
@@ -450,6 +477,13 @@ Forklaring:
 	        - `Melding er:` er statisk tekst (streng)
 	        - `${melding}` variabelen som skal skrives ut
 
+
+Bygg imaget på nytt:
+
+1. Høyreklikk på `Dockerfile`
+1. Velg *Build image...*
+
+
 Kjør deretter imaget interaktivt, slik:
 
 ![](./resources/runinteractive.png)
@@ -457,7 +491,7 @@ Kjør deretter imaget interaktivt, slik:
 Hvis alt gikk bra skal du se noe som likner på dette:
 
 ```bash
-Melding er: Hello IUR
+Melding er: Hello NVE
 ```
 
 ### Utfør operasjonene fra kommandolinjen
@@ -559,7 +593,7 @@ Demonstrere
 
 ```Dockerfile
 FROM helloworld
-ENV melding="Hello IUR! Nå med lag!"
+ENV melding="Hello NVE! Nå med lag!"
 ```
 
 Forklaring:
@@ -584,14 +618,14 @@ _Tips:_
 Følgende melding skal vises på skjermen:
 
 ```
-Melding er: Hello IUR! Nå med lag!
+Melding er: Hello NVE! Nå med lag!
 ```
 
 - Nå skrives den nye verdien til miljøvariabelen `melding` ut
 - Hvis du kjører imaget `helloworld`, skrives den gamle meldingen ut:
 
 ```
-Melding er: Hello IUR
+Melding er: Hello NVE
 ````
 
 - Vi har nå bygget et nytt image `lagdeling` som bygger videre på `helloworld`
@@ -612,7 +646,7 @@ docker history helloworld
 vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history helloworld
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
 b04ca4b27355   8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0
-<missing>      8 days ago   ENV melding=Hello IUR                           0B        buildkit.dockerfile.v0
+<missing>      8 days ago   ENV melding=Hello NVE                           0B        buildkit.dockerfile.v0
 <missing>      8 days ago   /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B        
 (..))
 ```
@@ -620,7 +654,7 @@ b04ca4b27355   8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B  
 - Legg merke til de to øverste linjene (se kolonne `CREATED BY`):
 
     - `CMD ["bash" "-c" "echo Melding er: $melding"]`
-    - `ENV melding=Hello IUR`
+    - `ENV melding=Hello NVE`
 
 - Dette viser at det er opprettet to lag. Ett lag for hver linje i `Dockerfile`
 
@@ -635,14 +669,14 @@ docker history lagdeling
 ```bash
 vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history lagdeling
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
-71e52e650dda   8 days ago   ENV melding=Hello IUR! Nå med lag!              0B        buildkit.dockerfile.v0
+71e52e650dda   8 days ago   ENV melding=Hello NVE! Nå med lag!              0B        buildkit.dockerfile.v0
 <missing>      8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0
-<missing>      8 days ago   ENV melding=Hello IUR                           0B        buildkit.dockerfile.v0
+<missing>      8 days ago   ENV melding=Hello NVE                           0B        buildkit.dockerfile.v0
 (..)
 ```
 
 - Legg merke til denne linjen:
-    - `ENV melding=Hello IUR! Nå med lag!`
+    - `ENV melding=Hello NVE! Nå med lag!`
 
 - Dette viser at det er opprettet et nytt lag som ligger oppå de andre lagene
 
@@ -709,7 +743,7 @@ Visual Studio viser nå en prompt (kommandolinje) i et terminalvindu:
 root@3a2899245da9:/#
 ```
 
-- ***Tips:*** Du kan også starte et interaktivt skall direkte fra terminalen:
+- ***Tips:*** Du kan også starte et interaktiv kommandolinje direkte fra terminalen:
     - `docker run --rm -it tilkobling_terminal`
 
 
@@ -720,7 +754,7 @@ root@3a2899245da9:/#
     - Bytt katalog med kommandoen `cd`, f.eks:
         - `cd /home/ubuntu/`
     - Skriv ut en melding på konsollet kommandoen `echo`, f.eks:
-        - `echo Hello IUR!`
+        - `echo Hello NVE!`
 
 - Du kan gjerne også teste ut andre kommandoer
     - Merk at noen av de krever at programmer er installert (f.eks `nano`). Det docker imaget vi har brukt er minimert for å redusere størrelsen.
@@ -745,13 +779,13 @@ Give your very best today.  Heaven knows it's little enough.
 ```
 
 - Test programmet `cowsay`:
-    - `/usr/games/cowsay Moooo IUR!`
+    - `/usr/games/cowsay Moooo NVE!`
     - Du skal nå få en ku med melding:
 
 ```bash
-root@dba090c7e0ec:/# /usr/games/cowsay Moooo IUR!
+root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
  ____________
-< Moooo IUR! >
+< Moooo NVE! >
  ------------
         \   ^__^
          \  (oo)\_______
@@ -1189,7 +1223,7 @@ Demonstrere hvordan vi konfigurerer:
 
 ```dockerfile
 FROM ubuntu
-ENV melding="Hello IUR"
+ENV melding="Hello NVE"
 CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
@@ -1251,7 +1285,7 @@ Dette representerer et lite, isolert miljø med en kjørende container.
 Du skal nå se denne meldingen i loggen:
 
 ```
-Melding er: Hello IUR
+Melding er: Hello NVE
 ```
 
 

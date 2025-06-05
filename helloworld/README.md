@@ -30,9 +30,7 @@ Docker images baserer seg på basisimager som vi bygger videre på. I dette tilf
 
 ### Bygg image
 
-- Finn frem docker extension i Visual Studio Code ved å klikke på docker- ikonet:
 
-![docker](./resources/docker_icon.png)
 
 Vi skal ny-bygge imaget:
 
@@ -69,14 +67,14 @@ I vinduet "Terminal" skal det ha blitt skrevet noe som likner på dette:
 Legg til denne linjen til `Dockerfile`:
 
 ```
-ENV melding="Hello IUR"
+ENV melding="Hello NVE"
 CMD ["bash", "-c", "echo Melding er: ${melding}"]
 ```
 
 Forklaring:
 
 - Linje 1
-    - vi setter en [miljøvariabelen](../oss/hvaer_miljovariabel.md) `melding` til verdien "Hello IUR"
+    - vi setter en [miljøvariabelen](../oss/hvaer_miljovariabel.md) `melding` til verdien "Hello NVE"
 - Linje 2
     - her skriver vi ut teksten "Melding er" etterfulgt av verdien av miljøvariabelen
     - linjen ser litt kompliser ut, men består av fire ganske enkle deler som betyr følgende:
@@ -107,7 +105,7 @@ Kjør deretter imaget interaktivt, slik:
 Hvis alt gikk bra skal du se noe som likner på dette:
 
 ```bash
-Melding er: Hello IUR
+Melding er: Hello NVE
 ```
 
 ### Utfør operasjonene fra kommandolinjen
@@ -129,8 +127,3 @@ vscode ➜ /workspaces/docker_kurs/helloworld (master)
 
 Linjene over vil bli forklart i mer detalj i senere oppgaver.
 
-## Opprydning
-
-Slett [imaget](../oss/hvaer_image.md):
-
-![](./resources/removeimage.png)
