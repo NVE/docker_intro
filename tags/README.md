@@ -13,7 +13,7 @@ I denne oppgaven skal vi se på hvordan vi kan bruke tags for å versjonere og a
 Demonstrere
 
 - hvordan vi kan bruke tags for angi versjoner av images
-- at vi kan sette flere tags på samme image for versjonering som f.eks prod og dev
+- at vi kan sette flere tags på samme image for versjonering som f.eks. prod og dev
 
 ## Fremgangsmåte
 
@@ -35,7 +35,7 @@ CMD ["bash", "-c", "echo Jeg er: $melding"]
     - Når du blir bedt om tag, skriv:
         - `tags:v1`
 
-- I vinduet "Docker: Images", verifiser at versjon 1 vises:
+- I vinduet "Container tools: Images", verifiser at versjon 1 vises:
 
 ```
  --tags
@@ -132,12 +132,12 @@ docker image ls
 Du skal nå få en opplisting liknende denne:
 
 ```
-REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
-tags         v3        7f90f224039c   6 hours ago   101MB
-<none>       <none>    0629805818cc   10 days ago   101MB
-tags         v1        1d70f80abb36   10 days ago   101MB
-tags         prod      30ad835da7f4   10 days ago   101MB
-tags         v2        30ad835da7f4   10 days ago   101MB
+REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
+tags         prod      692b5311b296   7 days ago   78.1MB
+tags         v2        692b5311b296   7 days ago   78.1MB
+tags         dev       df44803bbe6a   7 days ago   78.1MB
+tags         v3        df44803bbe6a   7 days ago   78.1MB
+tags         v1        71a67e221258   7 days ago   78.1MB
 ```
 
 ## Opprydning
