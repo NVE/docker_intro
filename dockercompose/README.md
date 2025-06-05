@@ -102,9 +102,9 @@ Vi skal nå gjøre det samme med kommandlinjen.
 - Ga til oppgavekatalogen:
   - `cd /workspaces/docker_intro/dockercompose/`
 - Ta opp miljøet:
-    - `docker-compose up`
+    - `docker compose up`
 - Ta ned miljøet:
-    - `docker-compose down`
+    - `docker compose down`
 
 ### Sett miljøvariabel
 
@@ -129,7 +129,7 @@ Melding er: Jasså?
 
 Vi skal nå settes opp et miljø med to containere som kommuniserer med hverandre.
 
-- Åpne filen `docker-compose.yml` i katalogen `webapp`:
+- Åpne filen `docker-compose.yml` i katalogen `webapp` (som er inne i mappen `dockercompose`):
 
 
 ```
@@ -176,7 +176,7 @@ Forklaring:
 - linje 11 - 12
     - vi deler porten 5432
 - linje 13
-    - her begynner definisjon av tjenesten `app``
+    - her begynner definisjon av tjenesten `app`
 - linje 14
     - her angir vi at tjenesten `app` skal bygges ved hjelp av `Dockerfile` som ligger i samme katalog som `docker-compose.yml`
 - linje 15 -
@@ -190,13 +190,17 @@ Her er en figur som viser miljøet:
 
 - Ta opp miljøet ved hjelp av docker extension eller opprett med kommandolinjen:
   - `cd webapp`
-  - `docker-compose up`
+  - `docker compose up -d`
 
 ### Sjekk miljøet
 
  - Åpne denne adressen i nettleseren:
 	 - http://localhost:3000/
 
+Du skal nå få servert meldingen
+```
+Hello NVE! Its me! From PostgreSQL!
+```
 
 - Ta ned miljøet:
     - `docker-compose down`
