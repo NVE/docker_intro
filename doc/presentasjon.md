@@ -26,6 +26,14 @@ Kursets hensikt er:
  - Bruk instruktører dersom dere står fast
  - Koble deg opp på Teams. Spør gjerne spørsmål i kanalen.
 
+### Typopgrafi og konvensjoner
+
+ - Bruk [README.md](../README.md) i rotkatalogen som utgangspunkt for navigering i innholdet
+ - Det er opprettet en katalog for hvert kurs (for mer info, se [filstruktur](./filstruktur.md))
+ - Det er benyttet en bestemt typgrafi i oppgaveteksten:
+    - Linjer med punkt foran (slik som denne) indikerer at noe skal utføres av deltakeren
+    - Linjer uten punkt foran er til informasjon
+
 
 ### Forutsetninger
 
