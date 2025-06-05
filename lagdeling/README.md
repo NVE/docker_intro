@@ -9,7 +9,13 @@ Lagene i docker images kan sammenliknes med lag på en kake der hvert lag bygger
 
 ![lag](./resources/layers.png)
 
-Dersom man gjør endringer i `Dockerfile` vil det resultere nye nytt lag som bygger videre på de eksisterende.
+Dersom man gjør endringer i `Dockerfile` vil det resultere i et nytt layer som bygger videre på de eksisterende. 
+
+Hvert layer identifiseres av en SHA256-hash. Denne vil endres dersom innholdet i et image endres, og er derfor garantert unike.
+
+Et layer skrives til disk bare èn gang, men kan brukes av flere images. Dersom vi endrer et image og legger til et nytt layer kan det brukes i flere images, men det lagres bare èn gang. 
+
+Hvert layer kan beskrives som en samling av diff'er fra underliggende layers, eller som en serie commits til et repo.
 
 ## Hensikt
 
