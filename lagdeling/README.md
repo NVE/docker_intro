@@ -38,11 +38,11 @@ Forklaring:
 - linje 1
 	- vi skal bygge videre på helloworld
 - linje 2
-	- vi endrer [miljøvariabelen](../oss/hvaer_miljovariabel.md) `melding`
+	- vi endrer [miljøvariabelen](../oss/hvaer_miljovariabel.md) `melding` som vi tidligere definerte i helloworld
 
 ### Kjør nytt image
 
-- Bygg image og tag det med navn `lagdeling`
+- Bygg image (dette MÅ gjøres via kommandolinjen, se under) og tag det med navn `lagdeling`
 - Kjør image
 
 
