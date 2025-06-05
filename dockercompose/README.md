@@ -35,7 +35,7 @@ CMD ["bash", "-c", "echo Melding er: ${melding}"]
 
 - Opprett en fil ved navn `docker-compose.yml` og legg inn dette innholdet:
 
-```dockerfile
+```
 services:
   helloworld:
     build: .
