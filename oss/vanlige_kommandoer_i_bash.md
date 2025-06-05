@@ -23,4 +23,4 @@
 | `find`   | Søker etter filer og mapper                              | `find . -name "*.txt"`        |
 | `grep`   | Søker etter tekst i filer                                | `grep "hei" fil.txt`          |
 | `whoami` | Viser hvilken bruker du kjører som                       | `whoami`                      |
-| `yes`    | Repeterer en streng i det uendelige                      | `yes NVE er flinke`           |
+| `yes`    | Repeterer en streng i det uendelige                      | `yes Klaatu barada nikto`           |
