@@ -19,7 +19,7 @@ Demonstrere
 
 ### Opprett image
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett Dockerfile i katalogen /workspaces/docker_intro/tilkobling_terminal/ med følgene innhold:
 
 ```
 FROM ubuntu
