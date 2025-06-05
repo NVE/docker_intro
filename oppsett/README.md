@@ -42,6 +42,8 @@ Når prosjektet er åpent, vises disse to meldingene:
 
 - Velg både "Reopen i container" og "Open Workspace"
 
+_Merk! Denne operasjonen kan ta litt tid!_
+
 Du skal nå ha et prosjekt som ser ca. slik ut:
 
 ![](./resources/new_project.png)
