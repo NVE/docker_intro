@@ -27,7 +27,7 @@ Følg instruksene her:
 
 For å komme gang med docker starter vi med den klassiske programmeringsoppgaven: hello world
 
-Vi skal lære å lage et image nesten fra bunnen av og tar oppsatt operativsystem og bygger på med egen funksjonalitet.
+Vi skal lære å lage et [image](./oss/hvaer_image.md) nesten fra bunnen av og tar oppsatt operativsystem og bygger på med egen funksjonalitet.
 
 - Oppgave: [Hello World](./helloworld/README.md)
 
@@ -87,7 +87,7 @@ I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven
 
 ### Docker compose
 
-Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i èn konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/volumer og forenkler opprettelse av reproduserbare miljøer.
+Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i èn konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/[volumer](./oss/hvaer_volume.md) og forenkler opprettelse av reproduserbare miljøer.
 
 I denne oppgaven skal vi opprette en applikasjon som kjører i et miljø med flere containere.
 
