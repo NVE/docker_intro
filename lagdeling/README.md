@@ -129,4 +129,4 @@ Forklaring:
 	- `rm` - vi skal slette images
 	- `lagdeling` - navn på image
 
-Hvis du vil, kan du også slette de som vist i [oppgaven hello world](../helloworld/README.md)
+Hvis du vil, kunne du isteden også slettet dem som vist i [oppgaven hello world](../helloworld/README.md)
