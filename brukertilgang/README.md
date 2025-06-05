@@ -19,7 +19,7 @@ Demonstrere
 
 ### Opprett docker image med rot- tilgang
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/brukertilgang/` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
