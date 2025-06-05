@@ -36,7 +36,7 @@ EXPOSE 8080
 
 ### Bygg og start image
 
-- Bygg og start image
+- Bygg og start image (tag denne med navnet `tjener`)
 - Visual studio skal nå komme opp med en melding om en åpen port. Velg "Open in Browser"
     - Alternativt, kan du åpne denne adressen i nettleseren din:
         - http://localhost:8080/
