@@ -35,11 +35,16 @@ Kursets hensikt er:
     - Linjer uten punkt foran er til informasjon
 
 
+
+
 ### Forutsetninger
 
 Programvare må være installert som angitt i [instruks for oppsett](../oppsett/README.md)
 
 
+### Merknader
+
+Visual Studio Code Extension "docker" endret navn til "Container Tools" i samme periode som kurset ble utviklet. Det være steder der referanser ikke er oppdatert.
 
 
 

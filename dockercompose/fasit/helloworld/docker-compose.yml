@@ -1,5 +1,0 @@
-services:
-  helloworld:
-    build: .
-    environment:
-      melding: Jasså?

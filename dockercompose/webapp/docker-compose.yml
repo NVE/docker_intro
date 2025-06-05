@@ -20,3 +20,5 @@ services:
       - PGPASSWORD=mypassword
       - PGDATABASE=mydb
       - PGPORT=5432
+    depends_on:
+      - postgres
