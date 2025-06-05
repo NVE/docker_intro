@@ -134,12 +134,25 @@ Kursets hensikt er:
  - Bruk instruktører dersom dere står fast
  - Koble deg opp på Teams. Spør gjerne spørsmål i kanalen.
 
+### Typopgrafi og konvensjoner
+
+ - Bruk README.md i rotkatalogen som utgangspunkt for navigering i innholdet
+ - Det er opprettet en katalog for hvert kurs (for mer info, se filstruktur)
+ - Det er benyttet en bestemt typgrafi i oppgaveteksten:
+    - Linjer med punkt foran (slik som denne) indikerer at noe skal utføres av deltakeren
+    - Linjer uten punkt foran er til informasjon
+
+
+
 
 ### Forutsetninger
 
 Programvare må være installert som angitt i instruks for oppsett
 
 
+### Merknader
+
+Visual Studio Code Extension "docker" endret navn til "Container Tools" i samme periode som kurset ble utviklet. Det være steder der referanser ikke er oppdatert.
 
 
 
@@ -275,6 +288,8 @@ Når prosjektet er åpent, vises disse to meldingene:
 
 - Velg både "Reopen i container" og "Open Workspace"
 
+_Merk! Denne operasjonen kan ta litt tid!_
+
 Du skal nå ha et prosjekt som ser ca. slik ut:
 
 ![](./resources/new_project.png)
@@ -391,6 +406,7 @@ Command failed: C:\VSCode-NVE\Code.exe c:\Users\nick\.vscode\extensions\ms-vscod
 
 
 
+
 # Hello World
 
 ## Oppsummering
@@ -420,7 +436,6 @@ FROM ubuntu
 Docker images baserer seg på basisimager som vi bygger videre på. I dette tilfellet operativsystemet ubuntu.
 
 ### Bygg image
-
 
 
 Vi skal ny bygge imaget:
@@ -513,11 +528,6 @@ vscode ➜ /workspaces/docker_kurs/helloworld (master)
 
 Linjene over vil bli forklart i mer detalj i senere oppgaver.
 
-## Opprydning
-
-Slett imaget:
-
-![](./resources/removeimage.png)
 
 
 
@@ -572,6 +582,13 @@ Lagene i docker images kan sammenliknes med lag på en kake der hvert lag bygger
 
 ![lag](./resources/layers.png)
 
+Dersom man gjør endringer i `Dockerfile` vil det resultere i et nytt layer som bygger videre på de eksisterende. 
+
+Hvert layer identifiseres av en SHA256-hash. Denne vil endres dersom innholdet i et image endres, og er derfor garantert unike.
+
+Et layer skrives til disk bare èn gang, men kan brukes av flere images. Dersom vi endrer et image og legger til et nytt layer kan det brukes i flere images, men det lagres bare èn gang. 
+
+Hvert layer kan beskrives som en samling av diff'er fra underliggende layers, eller som en serie commits til et repo.
 
 ## Hensikt
 
@@ -605,15 +622,11 @@ Forklaring:
 
 ### Kjør nytt image
 
-- Bygg image og tag det med navn `lagdeling`
-- Kjør image
+- Bygg og kjør image i terminalen:
 
-
-_Tips:_
-
-> Dersom du får en feilmelding her, bygg det manuelt i terminal:
->
->	`docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
+```bash
+docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
+```
 
 Følgende melding skal vises på skjermen:
 
@@ -718,7 +731,7 @@ Demonstrere
 
 ### Opprett image
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/tilkobling_terminal/` med følgene innhold:
 
 ```
 FROM ubuntu
@@ -810,6 +823,7 @@ root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
 
 
 
+
 # Installasjon av programvare
 
 
@@ -830,7 +844,7 @@ Demonstrere hvordan vi
 
 ### Opprett image
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/installasjon_programvare/` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
@@ -876,6 +890,7 @@ Du har nå et image som installerer programvaren `cowsay` under bygging og start
 
 
 
+
 # Tjener
 
 
@@ -896,7 +911,7 @@ Demonstrere
 
 ### Opprett image
 
-- Opprette `Dockerfile` med følgene innhold:
+- - Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/tjener/` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
@@ -932,6 +947,7 @@ I dette eksempelet vises roten i filsystemet, noe vi vanligvis ikke ønsker. I o
 - Slett image
 
 
+
 # Brukertilgang
 
 
@@ -952,7 +968,7 @@ Demonstrere
 
 ### Opprett docker image med rot- tilgang
 
-- Opprett `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/brukertilgang/` med følgene innhold:
 
 ```dockerfile
 FROM ubuntu
@@ -1050,6 +1066,7 @@ Hvis du vil kan du gjerne se hvor mye skade du klarer å gjøre. Forsøk også g
 
 - Slett containerene
 - Slett alle image
+
 
 
 
@@ -1235,7 +1252,7 @@ CMD ["bash", "-c", "echo Melding er: ${melding}"]
 
 - Opprett en fil ved navn `docker-compose.yml` og legg inn dette innholdet:
 
-```dockerfile
+```
 services:
   helloworld:
     build: .
@@ -1355,6 +1372,8 @@ services:
       - PGPASSWORD=mypassword
       - PGDATABASE=mydb
       - PGPORT=5432
+    depends_on:
+      - postgres
 ```
 
 I denne filen definerer vi to tjenester:
@@ -1379,8 +1398,14 @@ Forklaring:
     - her begynner definisjon av tjenesten `app``
 - linje 14
     - her angir vi at tjenesten `app` skal bygges ved hjelp av `Dockerfile` som ligger i samme katalog som `docker-compose.yml`
-- linje 15 -
+- linje 15
     - tilsvarende som for tjeneste postgres
+- linje 23-24
+    - her angir vi at containeren `app` er avhengig av `postgres`
+
+Containere er ofte avhengig av hverandre. F.eks. kan ikke webapplikasjoner starte opp før databasen er oppe å går. 
+
+Det at en container er avhengig av en annen, indikerer man ved å si at containeren `depends_on` en annen container. Det betyr at tjenesten vil vente til den andre tjenesten er klar.
 
 Her er en figur som viser miljøet:
 
@@ -1388,7 +1413,7 @@ Her er en figur som viser miljøet:
 
 ### Ta opp miljø
 
-- Ta opp miljøet ved hjelp av docker extension eller opprett med kommandolinjen:
+- Ta opp miljøet ved hjelp av container extension eller opprett med kommandolinjen:
   - `cd webapp`
   - `docker-compose up`
 
@@ -1398,13 +1423,70 @@ Her er en figur som viser miljøet:
 	 - http://localhost:3000/
 
 
-- Ta ned miljøet:
-    - `docker-compose down`
+Det er nå opprettet et internt nettverk mellom containerene Den ene containerenen kan nå de andre med DNS-navn over dette interne nettverket.
+
+Du kan inspisere det virtuelle nettverket slik:
+
+- I extension "Containers", gjør følgende:
+  - Åpne seksjonen "Networks" og verifiser at nettverket vises:
+
+![](./resources/networks.png)
+
+
+Dette kan du sjekke at det er kontakt mellom containerene ved å pinge den ene containeren fra den andre:
+
+- I extension "Containers", gjør følgende:
+  - Høyreklikk på `webapp-app` og velg "Attach shell":
+
+
+![](./resources/attach_shell.png)
+
+Det skal nå vises en kommandolinje tilsvarende denne:
+
+```bash
+root@7f5048ba73f8:/app# 
+```
+
+- Installer programmet ping
+
+```bash
+apt update
+apt install iputils-ping
+```
+
+- Gjør en `ping` til postgres (den andre containeren):
+
+```bash
+ping postgres
+```
+
+Ping skal nå vise at det er kontakt mellom containerene:
+
+```
+PING postgres (172.19.0.2) 56(84) bytes of data.
+64 bytes from webapp-postgres-1.webapp_default (172.19.0.2): icmp_seq=1 ttl=64 time=0.274 ms
+64 bytes from webapp-postgres-1.webapp_default (172.19.0.2): icmp_seq=2 ttl=64 time=0.066 ms
+```
+
+I filen `/webapp/app/index.js` (i oppgavekatalogen) kan du se at webapp kan referere til DNS-navnet til postgres:
+
+```js
+const pool = new Pool({
+  user: 'myuser',
+  host: 'postgres',
+  database: 'mydb',
+  password: 'mypassword',
+  port: 5432,
+});
+```
+
 
 
 ## Opprydning
 
-- Ta ned alle docker-compose- miljøer
+- Ta ned miljøet:
+    - `docker-compose down`
+
 - Slett alle images
 
 
@@ -1486,6 +1568,16 @@ I Docker og Docker Compose brukes de ofte for å konfigurere containere.
 
 Node.js er en åpen kildekode plattform for å kjøre JavaScript utenfor nettleseren. Den brukes ofte til å lage raske og skalerbare serverapplikasjoner. Den har et stort økosystem via npm (Node Package Manager). Node.js er populær for både API-er, sanntidstjenester og verktøyutvikling.
 
+### Hva er ping?
+
+Ping er et kommandolinjeverktøy echo-forespørsler til en angitt adresse. Det brukes til å gi en rask diagnostikk av internett- og lokalnettproblemer.
+
+Verktøyet viser om verten kan nås, og gir indikasjon på nettverkstilkoblingen.
+
+Hver mottatt «echo-reply» måles for rundturstid (latency), slik at du ser hvor raskt pakken kommer frem og tilbake. 
+
+
+
 ### Hva er PostgrSQL?
 
 PostgreSQL (ofte kalt Postgres) er et avansert, åpen kildekode databasesystem. Postgres støtter komplekse spørringer, relasjoner, og ACID-transaksjoner. Det er kjent for høy stabilitet, datasikkerhet og fleksibilitet. Postgres brukes ofte i webapplikasjoner, analyse og som grunnmur i store systemer.
@@ -1493,6 +1585,17 @@ PostgreSQL (ofte kalt Postgres) er et avansert, åpen kildekode databasesystem. 
 ### Hva er Ubuntu?
 
 Ubuntu er et gratis og åpen kildekode-operativsystem basert på Linux. Det er kjent for å være brukervennlig og passer både for nybegynnere og erfarne brukere. Ubuntu vedlikeholdes av selskapet Canonical og får regelmessige sikkerhetsoppdateringer. Systemet brukes både på skrivebord, servere og i skyplattformer. Det finnes også i mange varianter, som Ubuntu Server og Ubuntu Desktop.
+
+### Hva er et volume?
+
+Et Docker-volume er en lagringsressurs som docker oppretter og vedlikeholder utenfor containerens image.
+
+Data som lagres der, slettes ikke når containeren stoppes, oppgraderes eller fjernes, og kan deles mellom flere containere.
+
+Dete gir vedvarende, portable og backup-vennlige data uten å binde deg til en bestemt sti på verten.
+
+Du oppretter volumet med docker volume create og monterer det i containere via `-v` eller `--mount`-flagget.
+
 
 ### Hvorfor viser docker-historikken "missing" på noen av lagene?
 
