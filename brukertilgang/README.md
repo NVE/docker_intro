@@ -10,7 +10,7 @@ I denne oppgaven skal vi se på hvordan vi skal unngå å bruke [root](../oss/ro
 
 Demonstrere
 
-- hvordan vi skifter fra priviligert bruker ([root](../oss/root.md)) til upriviligiert bruker
+- hvordan vi skifter fra privilegert bruker ([root](../oss/root.md)) til upriviligert bruker
 - hvilken effekt dette har på brukerens tilgang
 
 
@@ -29,6 +29,7 @@ FROM ubuntu
 
 - Bygg og start image interaktivt.
 	- Hvis du vil, kan du gjøre det i terminal:
+		- `cd /workspaces/docker_intro/brukertilgang`
 		- `docker build . -t brukertilgang`
 		- `docker run --rm -it --name brukertilgang brukertilgang`
 
@@ -59,7 +60,7 @@ Forklaring:
     - vi får denne feilmeldingen:
         - `bash: /usr/bin/ls: No such file or directory`
 
-Dette er et eksempel på at brukeren har fått lov til å gjøre den noen ikke burde kunne gjøre.
+Dette er et eksempel på at brukeren har fått lov til å gjøre noe ingen burde kunne gjøre.
 
 Hvis du vil, kan du forsøke å slette flere filer og se når operativsystemet går i stykker.
 
@@ -97,7 +98,7 @@ appuser@a7afd15771b6:/$
 
 - Forsøk å slette `ls` som vist ovenfor.
 
-Du skal nå vå en bekreftelse på at du vil slette `ls`:
+Du skal nå få en bekreftelse på at du vil slette `ls`:
 
 ```bash
 rm: remove write-protected regular file '/usr/bin/ls'? 

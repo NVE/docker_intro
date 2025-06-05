@@ -81,7 +81,7 @@ For å oppnå sikker bruk av docker, er det en del hensyn å ta. Et vanlig probl
 
 ### Tags
 
-I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven skal vi sette tags og bruke de.
+I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven skal vi sette tags og bruke dem.
 
 - Oppgave: [Tags](./tags/README.md)
 
