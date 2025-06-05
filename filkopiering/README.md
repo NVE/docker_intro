@@ -19,7 +19,7 @@ Demonstrere
 
 ### Opprett dockerfile
 
-- Opprette `Dockerfile` med følgene innhold:
+- Opprett `Dockerfile` i katalogen `/workspaces/docker_intro/filkopiering/` med følgene innhold:
 
 ```
 FROM ubuntu
