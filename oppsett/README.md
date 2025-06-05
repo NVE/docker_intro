@@ -53,7 +53,7 @@ Du skal nå ha et prosjekt som ser ca. slik ut:
 ![](./resources/dev_container_connected.png)
 
 
-- Sjekk at følgende Docker extension er installert:
+- Sjekk at følgende Container Tools extension er installert:
 
 ![](./resources/docker_icon.png)
 

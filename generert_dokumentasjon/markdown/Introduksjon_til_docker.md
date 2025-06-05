@@ -580,7 +580,7 @@ I denne oppgaven skal vi se på hvordan docker bruker lag.
 
 Lagene i docker images kan sammenliknes med lag på en kake der hvert lag bygger på de andre:
 
-![lag](./resources/layers.png)
+![](./resources/layers.png)
 
 Dersom man gjør endringer i `Dockerfile` vil det resultere i et nytt layer som bygger videre på de eksisterende. 
 
@@ -795,7 +795,7 @@ Give your very best today.  Heaven knows it's little enough.
     - `/usr/games/cowsay Moooo NVE!`
     - Du skal nå få en ku med melding:
 
-```bash
+```
 root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
  ____________
 < Moooo NVE! >

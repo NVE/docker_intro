@@ -64,7 +64,9 @@ rm $kursrot/temp/README_full.md
 mv $kursrot/temp/README_full_nolinks.md $kursrot/temp/README_full.md
 
 cd $kursrot/temp/
-pandoc -i README_full.md -o README_full.docx --standalone --table-of-contents --reference-doc $kursrot/resources/Notatmal.docx
+pandoc -i README_full.md -o README_full.docx --standalone --table-of-contents --toc-depth=1 --reference-doc $kursrot/resources/Notatmal.docx
+pandoc -i README_full.md -o README_full_no_toc.docx --standalone --reference-doc $kursrot/resources/Notatmal.docx
+
 
 pandoc -i README_full.md -o $kursrot/generert_dokumentasjon/epub/Introduksjon_til_docker.epub -M title="Introduksjon til Docker" --epub-cover-image=$kursrot/resources/epub-cover.png
 
@@ -73,8 +75,8 @@ cp  -r $kursrot/temp/resources $kursrot/generert_dokumentasjon/markdown/
 
 cp $kursrot/temp/README_full.docx $kursrot/generert_dokumentasjon/word/Introduksjon_til_docker.docx
 
-libreoffice --headless --convert-to pdf --outdir ./ README_full.docx 
+libreoffice --headless --convert-to pdf --outdir ./ README_full_no_toc.docx
 
-cp $kursrot/temp/README_full.pdf $kursrot/generert_dokumentasjon/PDF/Introduksjon_til_docker.pdf
+cp $kursrot/temp/README_full_no_toc.pdf $kursrot/generert_dokumentasjon/PDF/Introduksjon_til_docker.pdf
 
 rm -rf $kursrot/temp

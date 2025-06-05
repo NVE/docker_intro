@@ -83,7 +83,7 @@ Give your very best today.  Heaven knows it's little enough.
     - `/usr/games/cowsay Moooo NVE!`
     - Du skal nå få en ku med melding:
 
-```bash
+```
 root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
  ____________
 < Moooo NVE! >
