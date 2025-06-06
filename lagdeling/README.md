@@ -45,7 +45,7 @@ Forklaring:
 - linje 1
 	- vi skal bygge videre på helloworld
 - linje 2
-	- vi endrer [miljøvariabelen](../oss/hvaer_miljovariabel.md) `melding`
+	- vi endrer [miljøvariabelen](../oss/hvaer_miljovariabel.md) `melding` som vi tidligere definerte i helloworld
 
 ### Kjør nytt image
 
@@ -135,4 +135,4 @@ Forklaring:
 	- `rm` - vi skal slette images
 	- `lagdeling` - navn på image
 
-Hvis du vil, kan du også slette de som vist i [oppgaven hello world](../helloworld/README.md)
+Hvis du vil, kunne du isteden også slettet dem som vist i [oppgaven hello world](../helloworld/README.md)

@@ -81,13 +81,13 @@ For å oppnå sikker bruk av docker, er det en del hensyn å ta. Et vanlig probl
 
 ### Tags
 
-I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven skal vi sette tags og bruke de.
+I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven skal vi sette tags og bruke dem.
 
 - Oppgave: [Tags](./tags/README.md)
 
 ### Docker compose
 
-Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i èn konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/[volumer](./oss/hvaer_volume.md) og forenkler opprettelse av reproduserbare miljøer.
+Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i én konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/[volumer](./oss/hvaer_volume.md) og forenkler opprettelse av reproduserbare miljøer.
 
 I denne oppgaven skal vi opprette en applikasjon som kjører i et miljø med flere containere.
 

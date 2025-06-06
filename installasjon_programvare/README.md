@@ -28,6 +28,7 @@ RUN apt update
 RUN apt install -y cowsay
 CMD ["/usr/games/cowsay", "MmmooOOOoohoo iiiIIuuuUURRRR"]
 ```
+og bygg imaget på vanlig måte.
 
 - Forklaring:
     - linje 1

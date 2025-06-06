@@ -33,14 +33,12 @@ EXPOSE 8080
 
 - Forklaring:
     - Linje 4:
-        - Her oppretter vi katalogen som skal deles. Katalogen blir erstattet med katalogen på vertsmaskin ved oppstart
+        - Her oppretter vi katalogen som skal deles. Denne katalogen skal vi erstatte med katalogen på vertsmaskin ved oppstart
 
 ### Opprett container
 
 - Bygg image og gi det navnet `fildeling`
 - Start ny [terminal](../oss/ny_terminal.md) eller gjenbruk eksisterende
-- Gå til oppgavekatalogen:
-    - `cd /workspaces/docker_intro/fildeling/`
 - Start image fra [terminalen](../oss/ny_terminal.md):
     - Gå til riktig mappe:
         - `cd /workspaces/docker_intro/fildeling/`
@@ -50,7 +48,7 @@ EXPOSE 8080
 Forklaring
 
 - flagget `-v` angir at vi skal dele en fil eller katalog
-    - første sti angir stien på versmaskin
+    - første sti angir stien på vertsmaskinen
     - stiene adskilles med `:`
     - andre sti angir stien på containeren
 

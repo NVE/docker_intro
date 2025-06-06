@@ -31,7 +31,7 @@ Docker images baserer seg på basisimager som vi bygger videre på. I dette tilf
 ### Bygg image
 
 
-Vi skal ny bygge imaget:
+Vi skal ny-bygge imaget:
 
 1. Høyreklikk på `Dockerfile`
 1. Velg *Build image...*
@@ -85,12 +85,17 @@ Forklaring:
 	        - `Melding er:` er statisk tekst (streng)
 	        - `${melding}` variabelen som skal skrives ut
 
+For at disse endringene skal ta effekt må vi først bygge imaget på nytt. Vi kan da følge samme metode som vi gjorde tidligere som er å gå tilbake til fil-utforskeren
 
-Bygg imaget på nytt:
+![explorer](./resources/explorer.png)
+
+og så
 
 1. Høyreklikk på `Dockerfile`
-1. Velg *Build image...*
+2. Velg *Build image...*
+3. Når VSCode spør om tag, skriv: `helloworld`
 
+![tag](./resources/tag.png)
 
 Kjør deretter imaget interaktivt, slik:
 
