@@ -83,7 +83,7 @@ docker history helloworld
 - Du skal få en tekst som likner på dette:
 
 ```bash
-vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history helloworld
+vscode ➜ /workspaces/docker_intro/lagdeling/skripter (master) $ docker history helloworld
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
 b04ca4b27355   8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0
 <missing>      8 days ago   ENV melding=Hello NVE                           0B        buildkit.dockerfile.v0
@@ -107,7 +107,7 @@ docker history lagdeling
 - Du skal få en tekst som likner på dette:
 
 ```bash
-vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history lagdeling
+vscode ➜ /workspaces/docker_intro/lagdeling/skripter (master) $ docker history lagdeling
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
 71e52e650dda   8 days ago   ENV melding=Hello NVE! Nå med lag!              0B        buildkit.dockerfile.v0
 <missing>      8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0

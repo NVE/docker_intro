@@ -515,7 +515,7 @@ Melding er: Hello NVE
 - Følgende kommandolinje skal vises:
 
 ```bash
-vscode ➜ /workspaces/docker_kurs/helloworld (master)
+vscode ➜ /workspaces/docker_intro/helloworld (master)
 ```
 
 - Skriv inn følgene kommandoer:
@@ -656,7 +656,7 @@ docker history helloworld
 - Du skal få en tekst som likner på dette:
 
 ```bash
-vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history helloworld
+vscode ➜ /workspaces/docker_intro/lagdeling/skripter (master) $ docker history helloworld
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
 b04ca4b27355   8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0
 <missing>      8 days ago   ENV melding=Hello NVE                           0B        buildkit.dockerfile.v0
@@ -680,7 +680,7 @@ docker history lagdeling
 - Du skal få en tekst som likner på dette:
 
 ```bash
-vscode ➜ /workspaces/docker_kurs/lagdeling/skripter (master) $ docker history lagdeling
+vscode ➜ /workspaces/docker_intro/lagdeling/skripter (master) $ docker history lagdeling
 IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
 71e52e650dda   8 days ago   ENV melding=Hello NVE! Nå med lag!              0B        buildkit.dockerfile.v0
 <missing>      8 days ago   CMD ["bash" "-c" "echo Melding er: $melding"]   0B        buildkit.dockerfile.v0
@@ -1606,7 +1606,7 @@ Når docker history viser <missing>, betyr det at Docker mangler metadata for de
 1. Bruk følgende menyvalg:
     - Terminal -> New Terminal
 2. Et nytt terminalvindu åpnes og følgende tekst (prompt) vises:
-    - `vscode ➜ /workspaces/docker_kurs (master) $`
+    - `vscode ➜ /workspaces/docker_intro (master) $`
 
 
 
@@ -1636,7 +1636,7 @@ En typisk Linux-prompt er ofte (og i eksemplene ovenfor) satt sammen av flere de
 Det er mulig å gjøre tilpasninger på promptet som i eksempelet som brukes i Visual Studio før du går inni en terminal:
 
 ```bash
-vscode ➜ /workspaces/docker_kurs/brukertilgang/fasit (master) $
+vscode ➜ /workspaces/docker_intro/brukertilgang/fasit (master) $
 ```
 
 Her vises git branch i tillegg til `(master)`.

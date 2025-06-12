@@ -24,7 +24,7 @@ Demonstrere
 - I terminalvinduet vises tekst som likner på dette:
 
 ```
- *  Executing task in folder docker_kurs: docker build --pull --rm -f 'nextcloud/Dockerfile' -t 'nextcloud:latest' 'nextcloud' 
+ *  Executing task in folder docker_intro: docker build --pull --rm -f 'nextcloud/Dockerfile' -t 'nextcloud:latest' 'nextcloud' 
 
 [+] Building 0.5s (5/5) FINISHED                                         docker:default
  => [internal] load build definition from Dockerfile                               0.0s

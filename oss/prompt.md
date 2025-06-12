@@ -24,7 +24,7 @@ En typisk Linux-prompt er ofte (og i eksemplene ovenfor) satt sammen av flere de
 Det er mulig å gjøre tilpasninger på promptet som i eksempelet som brukes i Visual Studio før du går inni en terminal:
 
 ```bash
-vscode ➜ /workspaces/docker_kurs/brukertilgang/fasit (master) $
+vscode ➜ /workspaces/docker_intro/brukertilgang/fasit (master) $
 ```
 
 Her vises git branch i tillegg til `(master)`.
