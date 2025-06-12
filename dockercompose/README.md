@@ -180,7 +180,7 @@ Forklaring:
 - linje 13
     - her begynner definisjon av tjenesten `app`
 - linje 14
-    - her angir vi at tjenesten `app` skal bygges ved hjelp av `Dockerfile` som ligger i samme katalog som `docker-compose.yml`
+    - her angir vi at tjenesten `app` skal bygges ved hjelp av `Dockerfile` som ligger i mappa `app`
 - linje 15
     - tilsvarende som for tjeneste postgres
 - linje 23-24
