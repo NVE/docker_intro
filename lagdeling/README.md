@@ -52,7 +52,9 @@ Forklaring:
 - Bygg og kjør image i terminalen:
 
 ```bash
-docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'
+cd /workspaces/docker_intro/lagdeling
+docker build --rm . -t lagdeling
+docker run --name lagdeling lagdeling
 ```
 
 Følgende melding skal vises på skjermen:
