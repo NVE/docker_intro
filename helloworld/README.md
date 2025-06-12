@@ -113,7 +113,7 @@ Melding er: Hello NVE
 - Følgende kommandolinje skal vises:
 
 ```bash
-vscode ➜ /workspaces/docker_intro/helloworld (master)
+vscode ➜ /workspaces/docker_intro (main)
 ```
 
 - Skriv inn følgene kommandoer:
