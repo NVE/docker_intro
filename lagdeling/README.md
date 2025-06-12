@@ -53,7 +53,7 @@ Forklaring:
 
 ```bash
 cd /workspaces/docker_intro/lagdeling
-docker build --rm . -t lagdeling
+docker build . -t lagdeling
 docker run --name lagdeling lagdeling
 ```
 
