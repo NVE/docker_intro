@@ -126,3 +126,12 @@ vscode ➜ /workspaces/docker_intro/helloworld (master)
 
 Linjene over vil bli forklart i mer detalj i senere oppgaver.
 
+_Tips:_ [Du kan bruke tab for automcomplete i terminalen](../tips/terminal_autocomplete.md)
+
+
+
+### Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))
+
+De neste oppgavene kommer ikke til å gjengi alle kommendoer og operasjoner som er utført i denne oppgaven. Gå gjerne tilbake til denne oppgaven hvis du trenger oppfriskning på f.eks hvordan du bygger et image eller kjører en container.

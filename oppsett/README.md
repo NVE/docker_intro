@@ -3,13 +3,14 @@
 
 ## Installasjon av programvare
 
-1. Installer WSL (Windows Subsystem for Linux)
+1. For Windows: Installer WSL (Windows Subsystem for Linux)
     1. Følg instruksen "Install WSL Command" på Microsoft sine sider:
         - https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command
 1. Installer [Docker Desktop](https://docs.docker.com/get-started/introduction/get-docker-desktop/)
 1. Installer [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)
 1. Installer extension "Dev Containers" i VSCode:
     - https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
+1. Installer git (se (https://gitforwindows.org/)[https://gitforwindows.org/])
 
 ## Kloning og åpning av prosjekt
 
@@ -105,6 +106,8 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
+
+Hvis alt fungerer, kan du begynne på oppgavene (se [hovedsiden](../README.md))
 
 
 ## Feilsøking

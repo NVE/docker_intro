@@ -118,3 +118,8 @@ Hvis du vil kan du gjerne se hvor mye skade du klarer å gjøre. Forsøk også g
 
 - Slett containerene
 - Slett alle image
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))

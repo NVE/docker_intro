@@ -144,3 +144,8 @@ tags         v1        71a67e221258   7 days ago   78.1MB
 
 - Slett alle containere
 - Slett alle images
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))

@@ -12,6 +12,10 @@ Denne seksjonen inneholder info om selve kurset.
 
 - Se [kurspresentasjon og info for instruktører](./doc/README.md)
 
+## Om bruk av git
+
+Kurset bruker [git](./oss/hvaer_git.md) og [github](./oss/hvaer_github.md) for lagring av kursinnholdet. Kurset forutsetter grunnleggende kompetanse på versjonskontrollsystemer.
+
 ## Oppsett
 
 Før vi begynner med oppgavene må vi sette opp lokalt miljø.

@@ -275,3 +275,8 @@ const pool = new Pool({
     - `docker-compose down`
 
 - Slett alle images
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))

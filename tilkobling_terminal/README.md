@@ -108,3 +108,8 @@ root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
         - velg `Remove...` og aksepter advarsel
 
 - Slett image
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))

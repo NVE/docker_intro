@@ -12,6 +12,10 @@ Denne seksjonen inneholder info om selve kurset.
 
 - Se kurspresentasjon og info for instruktører
 
+## Om bruk av git
+
+Kurset bruker git og github for lagring av kursinnholdet. Kurset forutsetter grunnleggende kompetanse på versjonskontrollsystemer.
+
 ## Oppsett
 
 Før vi begynner med oppgavene må vi sette opp lokalt miljø.
@@ -81,13 +85,13 @@ For å oppnå sikker bruk av docker, er det en del hensyn å ta. Et vanlig probl
 
 ### Tags
 
-I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven skal vi sette tags og bruke de.
+I docker bruker vi tags for å angi varianter av docker images. I denne oppgaven skal vi sette tags og bruke dem.
 
 - Oppgave: Tags
 
 ### Docker compose
 
-Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i èn konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/volumer og forenkler opprettelse av reproduserbare miljøer.
+Ved hjelp av Docker Compose kan vi beskrive en applikasjon som består av flere containere i én konfigurasjonsfil, og så starte alt med én kommando. Vi bruker det for å slippe manuell håndtering av individuelle `docker run`-kommandoer, noe som gir enklere oppsett, felles nettverk/volumer og forenkler opprettelse av reproduserbare miljøer.
 
 I denne oppgaven skal vi opprette en applikasjon som kjører i et miljø med flere containere.
 
@@ -249,13 +253,14 @@ I katalogen `skripter`under hovedkatalogen finnes følgende skripter som kan væ
 
 ## Installasjon av programvare
 
-1. Installer WSL (Windows Subsystem for Linux)
+1. For Windows: Installer WSL (Windows Subsystem for Linux)
     1. Følg instruksen "Install WSL Command" på Microsoft sine sider:
         - https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command
 1. Installer Docker Desktop
 1. Installer Visual Studio Code
 1. Installer extension "Dev Containers" i VSCode:
     - https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
+1. Installer git (se (https://gitforwindows.org/)[https://gitforwindows.org/])
 
 ## Kloning og åpning av prosjekt
 
@@ -352,6 +357,8 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
+Hvis alt fungerer, kan du begynne på oppgavene (se hovedsiden)
+
 
 ## Feilsøking
 
@@ -438,7 +445,7 @@ Docker images baserer seg på basisimager som vi bygger videre på. I dette tilf
 ### Bygg image
 
 
-Vi skal ny bygge imaget:
+Vi skal ny-bygge imaget:
 
 1. Høyreklikk på `Dockerfile`
 1. Velg *Build image...*
@@ -492,12 +499,17 @@ Forklaring:
 	        - `Melding er:` er statisk tekst (streng)
 	        - `${melding}` variabelen som skal skrives ut
 
+For at disse endringene skal ta effekt må vi først bygge imaget på nytt. Vi kan da følge samme metode som vi gjorde tidligere som er å gå tilbake til fil-utforskeren
 
-Bygg imaget på nytt:
+![explorer](./resources/explorer.png)
+
+og så
 
 1. Høyreklikk på `Dockerfile`
-1. Velg *Build image...*
+2. Velg *Build image...*
+3. Når VSCode spør om tag, skriv: `helloworld`
 
+![tag](./resources/tag.png)
 
 Kjør deretter imaget interaktivt, slik:
 
@@ -528,7 +540,15 @@ vscode ➜ /workspaces/docker_intro/helloworld (master)
 
 Linjene over vil bli forklart i mer detalj i senere oppgaver.
 
+_Tips:_ Du kan bruke tab for automcomplete i terminalen
 
+
+
+### Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se hovedsiden)
+
+De neste oppgavene kommer ikke til å gjengi alle kommendoer og operasjoner som er utført i denne oppgaven. Gå gjerne tilbake til denne oppgaven hvis du trenger oppfriskning på f.eks hvordan du bygger et image eller kjører en container.
 
 
 
@@ -618,14 +638,16 @@ Forklaring:
 - linje 1
 	- vi skal bygge videre på helloworld
 - linje 2
-	- vi endrer miljøvariabelen `melding`
+	- vi endrer miljøvariabelen `melding` som vi tidligere definerte i helloworld
 
 ### Kjør nytt image
 
 - Bygg og kjør image i terminalen:
 
 ```bash
-docker build --rm -f 'lagdeling/Dockerfile' -t 'lagdeling' 'lagdeling'`
+cd /workspaces/docker_intro/lagdeling
+docker build . -t lagdeling
+docker run --name lagdeling lagdeling
 ```
 
 Følgende melding skal vises på skjermen:
@@ -708,7 +730,14 @@ Forklaring:
 	- `rm` - vi skal slette images
 	- `lagdeling` - navn på image
 
-Hvis du vil, kan du også slette de som vist i oppgaven hello world
+
+Hvis du vil, kunne du isteden også slettet dem som vist i oppgaven hello world
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se hovedsiden)
+
 
 
 
@@ -745,8 +774,8 @@ FROM ubuntu
 ### Koble til interaktive terminal
 
 - Start image i interaktiv modus
-    - I vindu "Docker: Images":
-        - høyreklikk på image `tilkobling_terminal`
+    - I vindu "Containers: Images":
+        - høyreklikk på image `tilkobling_terminal` > `latest`
         - velg "Run interactive"
 
 
@@ -756,7 +785,7 @@ Visual Studio viser nå en prompt (kommandolinje) i et terminalvindu:
 root@3a2899245da9:/#
 ```
 
-- ***Tips:*** Du kan også starte et interaktiv kommandolinje direkte fra terminalen:
+- ***Tips:*** Du kan også starte en interaktiv kommandolinje direkte fra terminalen:
     - `docker run --rm -it tilkobling_terminal`
 
 
@@ -814,8 +843,8 @@ root@dba090c7e0ec:/# /usr/games/cowsay Moooo NVE!
 
 ## Opprydning
 
-- Slett containeren:
-    - I vindu "Docker: Containers":
+- Containeren skal ha blitt fjernet etter å ha skrevet `exit` i terminalen, men dersom den ikke er det:
+    - I vindu "Containers: Containers":
         - Høyreklikk på container `tilkobling_terminal`
         - velg `Remove...` og aksepter advarsel
 
@@ -852,6 +881,7 @@ RUN apt update
 RUN apt install -y cowsay
 CMD ["/usr/games/cowsay", "MmmooOOOoohoo iiiIIuuuUURRRR"]
 ```
+og bygg imaget på vanlig måte.
 
 - Forklaring:
     - linje 1
@@ -887,6 +917,11 @@ Du har nå et image som installerer programvaren `cowsay` under bygging og start
 ## Opprydning
 
 - Slett image
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se hovedsiden)
 
 
 
@@ -927,7 +962,7 @@ EXPOSE 8080
 
 ### Bygg og start image
 
-- Bygg og start image
+- Bygg og start image (tag denne med navnet `tjener`)
 - Visual studio skal nå komme opp med en melding om en åpen port. Velg "Open in Browser"
     - Alternativt, kan du åpne denne adressen i nettleseren din:
         - http://localhost:8080/
@@ -947,6 +982,11 @@ I dette eksempelet vises roten i filsystemet, noe vi vanligvis ikke ønsker. I o
 - Slett image
 
 
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se hovedsiden)
+
+
 
 # Brukertilgang
 
@@ -959,7 +999,7 @@ I denne oppgaven skal vi se på hvordan vi skal unngå å bruke root- bruker i d
 
 Demonstrere
 
-- hvordan vi skifter fra priviligert bruker (root) til upriviligiert bruker
+- hvordan vi skifter fra privilegert bruker (root) til upriviligert bruker
 - hvilken effekt dette har på brukerens tilgang
 
 
@@ -978,6 +1018,7 @@ FROM ubuntu
 
 - Bygg og start image interaktivt.
 	- Hvis du vil, kan du gjøre det i terminal:
+		- `cd /workspaces/docker_intro/brukertilgang`
 		- `docker build . -t brukertilgang`
 		- `docker run --rm -it --name brukertilgang brukertilgang`
 
@@ -1008,7 +1049,7 @@ Forklaring:
     - vi får denne feilmeldingen:
         - `bash: /usr/bin/ls: No such file or directory`
 
-Dette er et eksempel på at brukeren har fått lov til å gjøre den noen ikke burde kunne gjøre.
+Dette er et eksempel på at brukeren har fått lov til å gjøre noe ingen burde kunne gjøre.
 
 Hvis du vil, kan du forsøke å slette flere filer og se når operativsystemet går i stykker.
 
@@ -1046,7 +1087,7 @@ appuser@a7afd15771b6:/$
 
 - Forsøk å slette `ls` som vist ovenfor.
 
-Du skal nå vå en bekreftelse på at du vil slette `ls`:
+Du skal nå få en bekreftelse på at du vil slette `ls`:
 
 ```bash
 rm: remove write-protected regular file '/usr/bin/ls'? 
@@ -1068,6 +1109,11 @@ Hvis du vil kan du gjerne se hvor mye skade du klarer å gjøre. Forsøk også g
 - Slett alle image
 
 
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se hovedsiden)
+
+
 
 
 # Tags
@@ -1083,7 +1129,7 @@ I denne oppgaven skal vi se på hvordan vi kan bruke tags for å versjonere og a
 Demonstrere
 
 - hvordan vi kan bruke tags for angi versjoner av images
-- at vi kan sette flere tags på samme image for versjonering som f.eks prod og dev
+- at vi kan sette flere tags på samme image for versjonering som f.eks. prod og dev
 
 ## Fremgangsmåte
 
@@ -1105,7 +1151,7 @@ CMD ["bash", "-c", "echo Jeg er: $melding"]
     - Når du blir bedt om tag, skriv:
         - `tags:v1`
 
-- I vinduet "Docker: Images", verifiser at versjon 1 vises:
+- I vinduet "Container tools: Images", verifiser at versjon 1 vises:
 
 ```
  --tags
@@ -1202,18 +1248,24 @@ docker image ls
 Du skal nå få en opplisting liknende denne:
 
 ```
-REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
-tags         v3        7f90f224039c   6 hours ago   101MB
-<none>       <none>    0629805818cc   10 days ago   101MB
-tags         v1        1d70f80abb36   10 days ago   101MB
-tags         prod      30ad835da7f4   10 days ago   101MB
-tags         v2        30ad835da7f4   10 days ago   101MB
+REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
+tags         prod      692b5311b296   7 days ago   78.1MB
+tags         v2        692b5311b296   7 days ago   78.1MB
+tags         dev       df44803bbe6a   7 days ago   78.1MB
+tags         v3        df44803bbe6a   7 days ago   78.1MB
+tags         v1        71a67e221258   7 days ago   78.1MB
 ```
 
 ## Opprydning
 
 - Slett alle containere
 - Slett alle images
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se hovedsiden)
+
 
 
 
@@ -1319,9 +1371,9 @@ Vi skal nå gjøre det samme med kommandlinjen.
 - Ga til oppgavekatalogen:
   - `cd /workspaces/docker_intro/dockercompose/`
 - Ta opp miljøet:
-    - `docker-compose up`
+    - `docker compose up`
 - Ta ned miljøet:
-    - `docker-compose down`
+    - `docker compose down`
 
 ### Sett miljøvariabel
 
@@ -1346,7 +1398,7 @@ Melding er: Jasså?
 
 Vi skal nå settes opp et miljø med to containere som kommuniserer med hverandre.
 
-- Åpne filen `docker-compose.yml` i katalogen `webapp`:
+- Åpne filen `docker-compose.yml` i katalogen `webapp` (som er inne i mappen `dockercompose`):
 
 
 ```
@@ -1395,7 +1447,7 @@ Forklaring:
 - linje 11 - 12
     - vi deler porten 5432
 - linje 13
-    - her begynner definisjon av tjenesten `app``
+    - her begynner definisjon av tjenesten `app`
 - linje 14
     - her angir vi at tjenesten `app` skal bygges ved hjelp av `Dockerfile` som ligger i samme katalog som `docker-compose.yml`
 - linje 15
@@ -1415,13 +1467,17 @@ Her er en figur som viser miljøet:
 
 - Ta opp miljøet ved hjelp av container extension eller opprett med kommandolinjen:
   - `cd webapp`
-  - `docker-compose up`
+  - `docker compose up -d`
 
 ### Sjekk miljøet
 
  - Åpne denne adressen i nettleseren:
 	 - http://localhost:3000/
 
+Du skal nå få servert meldingen
+```
+Hello NVE! Its me! From PostgreSQL!
+```
 
 Det er nå opprettet et internt nettverk mellom containerene Den ene containerenen kan nå de andre med DNS-navn over dette interne nettverket.
 
@@ -1490,6 +1546,12 @@ const pool = new Pool({
 - Slett alle images
 
 
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se hovedsiden)
+
+
+
 
 # Ressurser
 
@@ -1551,6 +1613,24 @@ fortune | cowsay
 ```
 
 Kommandoen viser et sitat sagt av en ASCII-ku.
+
+
+### Hva er github?
+
+GitHub er en nettbasert plattform for lagring og samarbeid på kodeprosjekter som bruker Git som versjonskontrollsystem. 
+
+Den gjør det enkelt for utviklere å dele kode, samarbeide, og holde oversikt over endringer i prosjektet.
+
+GitHub tilbyr også funksjoner som issues, prosjekttavler og CI/CD-integrasjon. Tjenesten brukes både til åpne kildekodeprosjekter og private bedriftsprosjekter. Microsoft eier GitHub siden 2018.
+
+
+### Hva er git?
+
+Git er et versjonskontrollsystem som brukes til å spore endringer i filer og samarbeide om kode. Hver utvikler har en komplett kopi av hele prosjektets historikk lokalt. Endringer gjøres lokalt og flettes deretter sammen til en kopi på en server.
+
+Git lagrer alle endringer noe som gjør at man kan gå tilbake i tid eller sammenligne versjoner.
+
+Systemet brukes bredt i moderne programvareutvikling, særlig sammen med plattformer som GitHub og GitLab.
 
 ### Hva er et docker image?
 
@@ -1658,28 +1738,40 @@ Sammen gjør --it det mulig å bruke terminalen interaktivt. Da får du et inter
 
 Flagget --rm gjør at Docker automatisk sletter containeren når den stopper. Du slipper å rydde opp med docker rm etterpå. Det er nyttig for midlertidige tester og engangskjøring. Uten --rm blir containeren liggende selv etter at den er ferdig. Med --rm forsvinner den med én gang den avsluttes.
 
-### Hvilke er de mest valige kommandoene i bash?
+### Hvilke er de mest vanlige kommandoene i bash?
 
-|Kommando|Beskrivelse|Eksempel|
-|---|---|---|
-|`ls`|Lister filer og mapper|`ls -l`|
-|`cd`|Bytt katalog (change directory)|`cd /home/user`|
-|`pwd`|Viser nåværende katalog (print working directory)|`pwd`|
-|`mkdir`|Lager ny mappe|`mkdir ny_mappe`|
-|`touch`|Lager en ny tom fil|`touch fil.txt`|
-|`rm`|Sletter filer eller mapper|`rm fil.txt`, `rm -r mappe`|
-|`cp`|Kopierer filer eller mapper|`cp fil.txt kopi.txt`|
-|`mv`|Flytter eller gir nytt navn til filer|`mv gammel.txt ny.txt`|
-|`cat`|Viser innholdet i en fil|`cat fil.txt`|
-|`echo`|Skriver tekst til terminal eller fil|`echo "hei"`|
-|`nano`  |Tekstredigerere i terminal (krever installasjon av nano) |`nano fil.txt`|
-|`sudo`|Kjør som administrator (superbruker)|`sudo apt update`|
-|`apt` |Installerer programvare (Debian/Red Hat)|`sudo apt install curl`|
-|`top` |Viser kjørende prosesser|`top`|
-|`ps`|Viser aktive prosesser|`ps aux`|
-|`kill`|Stopper prosesser|`kill 1234`|
-|`chmod`|Endrer rettigheter på filer|`chmod +x script.sh`|
-|`chown`|Endrer eier av fil|`chown bruker:gruppe fil.txt`|
-|`find`|Søker etter filer og mapper|`find . -name "*.txt"`|
-|`grep`|Søker etter tekst i filer|`grep "hei" fil.txt`|
+| Kommando | Beskrivelse                                              | Eksempel                      |
+| -------- | -------------------------------------------------------- | ----------------------------- |
+| `ls`     | Lister filer og mapper                                   | `ls -l`                       |
+| `cd`     | Bytt katalog (change directory)                          | `cd /home/user`               |
+| `pwd`    | Viser nåværende katalog (print working directory)        | `pwd`                         |
+| `mkdir`  | Lager ny mappe                                           | `mkdir ny_mappe`              |
+| `touch`  | Lager en ny tom fil                                      | `touch fil.txt`               |
+| `rm`     | Sletter filer eller mapper                               | `rm fil.txt`, `rm -r mappe`   |
+| `cp`     | Kopierer filer eller mapper                              | `cp fil.txt kopi.txt`         |
+| `mv`     | Flytter eller gir nytt navn til filer                    | `mv gammel.txt ny.txt`        |
+| `cat`    | Viser innholdet i en fil                                 | `cat /etc/os-release`         |
+| `echo`   | Skriver tekst til terminal eller fil                     | `echo "hei"`                  |
+| `nano`   | Tekstredigerere i terminal (krever installasjon av nano) | `nano fil.txt`                |
+| `sudo`   | Kjør som administrator (superbruker)                     | `sudo apt update`             |
+| `apt`    | Installerer programvare (Debian/Red Hat)                 | `sudo apt install curl`       |
+| `top`    | Viser kjørende prosesser                                 | `top`                         |
+| `ps`     | Viser aktive prosesser                                   | `ps aux`                      |
+| `kill`   | Stopper prosesser                                        | `kill 1234`                   |
+| `chmod`  | Endrer rettigheter på filer                              | `chmod +x script.sh`          |
+| `chown`  | Endrer eier av fil                                       | `chown bruker:gruppe fil.txt` |
+| `find`   | Søker etter filer og mapper                              | `find . -name "*.txt"`        |
+| `grep`   | Søker etter tekst i filer                                | `grep "hei" fil.txt`          |
+| `whoami` | Viser hvilken bruker du kjører som                       | `whoami`                      |
+| `yes`    | Repeterer en streng i det uendelige                      | `yes Klaatu barada nikto`           |
+
+
+
+
+## Tips
+
+## Bruk av tab for autocomplete i terminal
+
+I bash (kommandolinjen i Linux) kan du rbuke Tab-tasten til autoutfulling (autocomplete). Når du trykker Tab, forsøker Bash å fullføre kommandoer, filnavn, mapper eller variabler basert på det du har begynt å skrive. Hvis det finnes flere muligheter, kan du trykke Tab to ganger raskt for å vise en liste over alternativer.
+
 

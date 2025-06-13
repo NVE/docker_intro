@@ -51,10 +51,16 @@ copy_course_files tags
 copy_course_files dockercompose
 
 { printf '\n\n# Ressurser\n\n'; } >> $kursrot/temp/README_full.md
+
 { printf '\n\n## Ofte stilte spørsmål\n\n'; } >> $kursrot/temp/README_full.md
 
-
 for f in $kursrot/oss/*.md; do
+  { cat "$f"; printf '\n\n'; } >> $kursrot/temp/README_full.md
+done
+
+{ printf '\n\n## Tips\n\n'; } >> $kursrot/temp/README_full.md
+
+for f in $kursrot/tips/*.md; do
   { cat "$f"; printf '\n\n'; } >> $kursrot/temp/README_full.md
 done
 

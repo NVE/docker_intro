@@ -60,3 +60,8 @@ I oppgaven [fildeling](../fildeling/README.md) skal vi se på hvordan vi deler f
 
 - Slett containeren
 - Slett image
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))

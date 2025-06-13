@@ -71,3 +71,8 @@ Siden filene nå er delt, vil siden endre seg dersom du endrer på filene i kata
 
 - Slett containeren
 - Slett image
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))

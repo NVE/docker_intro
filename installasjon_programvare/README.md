@@ -64,3 +64,8 @@ Du har nå et image som installerer programvaren `cowsay` under bygging og start
 ## Opprydning
 
 - Slett image
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))

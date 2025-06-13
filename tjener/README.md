@@ -54,3 +54,8 @@ I dette eksempelet vises roten i filsystemet, noe vi vanligvis ikke ønsker. I o
 
 - Slett containeren
 - Slett image
+
+
+## Neste oppgave
+
+Hvis alt fungerer, kan du begynne på neste oppgave (se [hovedsiden](../README.md))
